@@ -1,5 +1,14 @@
 .App {
   text-align: center;
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'nav content'
+    'footer footer';
+  grid-template-rows: 3rem 1fr 2rem;
+  grid-template-columns: 2fr 12fr;
+  height: 100vh;
+  grid-gap: 0.5rem;
 }
 
 .App-logo {
@@ -35,4 +44,24 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.header {
+  background-color: #61dafb;
+  grid-area: header;
+}
+.header img {
+  width: 50px;
+}
+.nav {
+  grid-area: nav;
+  background-color: aquamarine;
+}
+.content {
+  grid-area: content;
+  background-color: bisque;
+}
+.footer {
+  grid-area: footer;
+  background-color: rgb(154, 101, 101);
 }
