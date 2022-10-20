@@ -1,27 +1,16 @@
 import './App.css';
-import logo from './assets/img/avatar.jpg';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Navbar from './components/Navbar/Navbar';
+import Profile from './components/Profile/Profile';
 
 const App = () => {
   return (
     <div className='App'>
-      <header className='header'>
-        <img src={logo} alt='logo' />
-      </header>
-      <nav className='nav'>
-        <ul className='nav-list'>
-          <li className='nav-list__item'>
-            <a href='#'>Profile</a>
-          </li>
-          <li className='nav-list__item'>
-            <a href='#'>Messages</a>
-          </li>
-          <li className='nav-list__item'>
-            <a href='#'>Profile</a>{' '}
-          </li>
-        </ul>
-      </nav>
-      <main className='content'>content</main>
-      <footer className='footer'>footer</footer>
+      <Header />
+      <Navbar />
+      <Profile />
+      <Footer />
     </div>
   );
 };
