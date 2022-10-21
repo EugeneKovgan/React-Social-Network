@@ -1,0 +1,5 @@
+.content {
+  grid-area: content;
+  background-color: bisque;
+  border-radius: 0.5rem;
+}

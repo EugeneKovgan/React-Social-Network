@@ -1,0 +1,12 @@
+.header {
+  grid-area: header;
+  background: rgba(239, 234, 225, 0.2);
+  border: 1px solid #efeae1;
+}
+.header_container {
+  display: flex;
+}
+.header_container img {
+  margin-top: 0.15rem;
+  height: 2.75rem;
+}

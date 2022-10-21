@@ -1,0 +1,23 @@
+.nav {
+  grid-area: nav;
+  background-color: aquamarine;
+  border-radius: 0.5rem;
+}
+.nav .nav_list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 1rem 0 1rem;
+}
+
+.nav_list__item a {
+  color: #747474;
+  font-weight: 400;
+  font-size: 18px;
+  text-transform: uppercase;
+  line-height: 1.5rem;
+}
+
+.nav_list__item a:hover {
+  text-decoration: underline;
+}
