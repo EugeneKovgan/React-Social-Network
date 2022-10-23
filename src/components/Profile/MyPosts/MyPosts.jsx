@@ -4,15 +4,15 @@ import Post from './Post/Post';
 const MyPosts = () => {
   return (
     <div className={styles.myPosts}>
-      <div>
-        <textarea name='' id='' cols='30' rows='10'></textarea>
+      <div className={styles.newPostBlock}>
+        <textarea name='' id='' rows='10'></textarea>
         <button>App post</button>
       </div>
       <div className={styles.postList}>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <Post message='hello' likes='5' />
+        <Post message='hello my friend' likes='5' />
+        <Post message='hello my friend - 2' likes='5' />
+        <Post message='hello my friend - 3' likes='5' />
       </div>
     </div>
   );

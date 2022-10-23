@@ -1,11 +1,14 @@
 import styles from './Post.module.css';
 import photo from '../../../../assets/img/artur.jpg';
 
-const Post = () => {
+const Post = (props) => {
   return (
     <div className={styles.post}>
       <img src={photo} alt='photo' />
-      <p>post 1</p>
+      <div className={styles.textBlock}>
+        <p>{props.message}</p>
+        <p>likes = {props.likes}</p>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,22 @@
-.postList {
+.myPosts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+}
+.myPosts .newPostBlock {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
+}
+.myPosts .newPostBlock textarea {
+  height: 3rem;
+}
+.myPosts .postList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
 }
