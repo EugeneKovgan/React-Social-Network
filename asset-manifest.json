@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/react-social-network/static/css/main.73616a61.css",
-    "main.js": "/react-social-network/static/js/main.135c1204.js",
+    "main.js": "/react-social-network/static/js/main.f5ecbbb3.js",
     "static/js/787.8bc1f637.chunk.js": "/react-social-network/static/js/787.8bc1f637.chunk.js",
     "static/media/artur.jpg": "/react-social-network/static/media/artur.b3d01868b89eb31afadc.jpg",
     "static/media/logo_thyme.svg": "/react-social-network/static/media/logo_thyme.e662f57d0050ae1c3b594ef246a62593.svg",
     "static/media/eva_github-outline.svg": "/react-social-network/static/media/eva_github-outline.216d00ec701728be8f07935798280e63.svg",
     "index.html": "/react-social-network/index.html",
     "main.73616a61.css.map": "/react-social-network/static/css/main.73616a61.css.map",
-    "main.135c1204.js.map": "/react-social-network/static/js/main.135c1204.js.map",
+    "main.f5ecbbb3.js.map": "/react-social-network/static/js/main.f5ecbbb3.js.map",
     "787.8bc1f637.chunk.js.map": "/react-social-network/static/js/787.8bc1f637.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.73616a61.css",
-    "static/js/main.135c1204.js"
+    "static/js/main.f5ecbbb3.js"
   ]
 }
