@@ -9,25 +9,18 @@
   grid-template-columns: 2fr 12fr;
   height: 100vh;
   grid-gap: 0.5rem;
-  box-sizing: border-box;
   font-family: 'Roboto';
   font-style: normal;
 }
 
 .container {
-  max-width: 1600px;
-  margin: 0 auto;
+  /* max-width: 1600px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-}
-
-.svg-scale {
-  cursor: pointer;
-  transition: all 0.2s;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-.svg-scale:hover {
-  scale: 1.1;
 }
 
 a {

@@ -1,24 +1,24 @@
 .footer {
   grid-area: footer;
-  border: 1px solid #efeae1;
+  border-top: 1px solid #efeae1;
   background: rgba(239, 234, 225, 0.2);
-}
-
-.footer_container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
-.footer_container img {
-  margin-top: 0.3rem;
+.footer img {
   height: 2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-.footer_container p {
+.footer img:hover {
+  scale: 1.1;
+}
+.footer p {
   font-weight: 300;
   font-size: 12px;
   line-height: 16px;
   text-align: center;
   color: #747474;
   margin: 0;
-  margin-top: 0.4rem;
 }

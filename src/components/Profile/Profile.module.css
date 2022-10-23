@@ -1,5 +1,6 @@
 .content {
   grid-area: content;
-  background-color: bisque;
+  border: 1px solid #efeae1;
   border-radius: 0.5rem;
+  padding: 0.5rem;
 }
