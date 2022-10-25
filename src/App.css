@@ -9,7 +9,7 @@
   grid-template-columns: 2fr 12fr;
   height: 100vh;
   grid-gap: 0.5rem;
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
 }
 

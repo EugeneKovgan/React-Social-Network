@@ -1,7 +1,8 @@
 .nav {
   grid-area: nav;
   background-color: #d3f0e1;
-  border-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 .nav .nav_list {
   display: flex;

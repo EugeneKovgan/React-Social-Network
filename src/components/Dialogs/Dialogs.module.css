@@ -1,0 +1,7 @@
+.dialogs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+}
