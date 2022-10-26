@@ -4,6 +4,7 @@
   border-bottom-right-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
 }
+
 .nav .nav_list {
   display: flex;
   flex-direction: column;
@@ -11,14 +12,26 @@
   padding: 0 1rem 0 1rem;
 }
 
-.nav_list__item a {
+.nav_list__item {
+  box-sizing: border-box;
   color: #747474;
   font-weight: 400;
   font-size: 18px;
   text-transform: uppercase;
   line-height: 1.5rem;
+  border: 1px solid #d3f0e1;
+  padding: 0.02rem 0.25rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
 }
 
 .nav_list__item a:hover {
   text-decoration: underline;
+}
+
+.active {
+  color: #747474;
+  border: 1px solid #3d3d3d;
+  padding: 0.02rem 0.25rem;
+  border-radius: 0.5rem;
 }
