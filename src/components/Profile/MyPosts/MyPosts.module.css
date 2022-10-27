@@ -1,9 +1,4 @@
 .myPosts {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-  border-radius: 0.5rem;
 }
 
 .myPosts .newPostBlock {
@@ -11,15 +6,23 @@
   flex-direction: column;
   gap: 0.5rem;
   width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 .myPosts .newPostBlock textarea {
   height: 3rem;
+  border-radius: 0.5rem;
 }
 
 .myPosts .newPostBlock button {
   cursor: pointer;
   height: 2rem;
+  border: 1px solid #efeae1;
+  border-radius: 0.5rem;
+}
+
+.myPosts .newPostBlock button:hover {
+  background: rgba(239, 234, 225, 0.2);
 }
 
 .myPosts .postList {

@@ -1,24 +1,27 @@
 .dialogs {
   display: flex;
-  /*flex-direction: column;*/
   align-items: flex-start;
   gap: 2rem;
   border-radius: 0.5rem;
 }
 
 .dialogs_items {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }
 
 .dialog.active a {
-  /*background-color: #efeae1;*/
   color: red;
 }
 
 .messages {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.message {
+  border: 1px solid #efeae1;
+  /*background-color: #efeae1;*/
+  background: rgba(239, 234, 225, 0.2);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
