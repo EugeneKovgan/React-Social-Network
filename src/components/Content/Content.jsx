@@ -11,8 +11,8 @@ const Content = () => {
     <div className={styles.content}>
       {/*content*/}
       <Routes>
-        <Route path="/dialogs" element={<Dialogs />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/dialogs/*" element={<Dialogs />} /> {/*messages*/}
         <Route path="/news" element={<News />} />
         <Route path="/music" element={<Music />} />
         <Route path="/settings" element={<Settings />} />
