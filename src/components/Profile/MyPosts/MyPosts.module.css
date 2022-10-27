@@ -5,15 +5,23 @@
   gap: 0.5rem;
   border-radius: 0.5rem;
 }
+
 .myPosts .newPostBlock {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   width: 100%;
 }
+
 .myPosts .newPostBlock textarea {
   height: 3rem;
 }
+
+.myPosts .newPostBlock button {
+  cursor: pointer;
+  height: 2rem;
+}
+
 .myPosts .postList {
   display: flex;
   flex-direction: column;

@@ -7,9 +7,12 @@
 }
 
 .dialogs_items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.dialog.active {
+.dialog.active a {
   /*background-color: #efeae1;*/
   color: red;
 }
