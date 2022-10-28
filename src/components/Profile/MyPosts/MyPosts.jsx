@@ -244,7 +244,13 @@ const MyPosts = () => {
 
       <div className={styles.postList}>
         {dialogsData.map((item) => {
-          return <Post message={item.company.name} likes={item.phone} />;
+          return (
+            <Post
+              key={item.id}
+              message={item.company.name}
+              likes={item.phone}
+            />
+          );
         })}
       </div>
     </div>

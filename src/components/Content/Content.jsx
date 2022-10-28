@@ -1,10 +1,10 @@
 import styles from "./Content.module.css";
-import Dialogs from "../Dialogs/Dialogs";
 import Profile from "../Profile/Profile";
 import News from "../News/News";
 import Music from "../Music/Music";
 import Settings from "../Settings/Settings";
 import { Route, Routes } from "react-router-dom";
+import Dialogs from "../Dialogs/Dialog";
 
 const Content = () => {
   return (

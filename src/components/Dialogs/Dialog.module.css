@@ -1,0 +1,19 @@
+.dialogs {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  border-radius: 0.5rem;
+}
+
+.dialogs_items {
+}
+
+.dialog.active a {
+  color: red;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

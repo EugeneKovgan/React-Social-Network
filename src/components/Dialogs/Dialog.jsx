@@ -1,18 +1,6 @@
-import styles from "./Dialogs.module.css";
-import { NavLink } from "react-router-dom";
-
-const DialogItem = ({ name, id }) => {
-  const path = "./dialogs/" + id;
-  return (
-    <div className={styles.dialog}>
-      <NavLink to={path}>{name}</NavLink>
-    </div>
-  );
-};
-
-const Message = ({ message }) => {
-  return <div className={styles.message}>{message}</div>;
-};
+import styles from "./Dialog.module.css";
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
 
 const Dialogs = () => {
   const dialogsData = [
@@ -250,15 +238,14 @@ const Dialogs = () => {
 
   return (
     <div className={styles.dialogs}>
-      dialogs (messages)
       <div className={styles.dialogs_items}>
         {dialogsData.map((item) => {
-          return <DialogItem name={item.name} id={item.id} />;
+          return <DialogItem key={item.id} name={item.name} id={item.id} />;
         })}
       </div>
       <div className={styles.messages}>
         {dialogsData.map((item) => {
-          return <Message message={item.company.catchPhrase} />;
+          return <Message key={item.id} message={item.company.catchPhrase} />;
         })}
       </div>
     </div>
