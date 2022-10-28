@@ -2,11 +2,11 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import styles from "./Profile.module.css";
 
-const Profile = () => {
+const Profile = ({ dialogsData }) => {
   return (
     <main className={styles.profile}>
       <ProfileInfo />
-      <MyPosts />
+      <MyPosts dialogsData={dialogsData} />
     </main>
   );
 };
