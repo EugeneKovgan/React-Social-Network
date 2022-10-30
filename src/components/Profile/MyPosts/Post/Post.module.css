@@ -1,7 +1,7 @@
 .post {
   display: flex;
-  gap: 0.5rem;
-  align-items: center;
+  gap: 1rem;
+  /*align-items: center;*/
   justify-content: flex-start;
   border: 1px solid #efeae1;
   padding: 0.5rem;
@@ -9,9 +9,32 @@
 }
 
 .textBlock {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
 }
 
+.header_block {
+}
+
+.footer_block {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .textBlock p {
+}
+
+.info_block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.info_block img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }

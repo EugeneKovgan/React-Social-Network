@@ -17,8 +17,7 @@ const Content = ({ dialogsData }) => {
         <Route
           path="/dialogs/*"
           element={<Dialogs dialogsData={dialogsData} />}
-        />{" "}
-        {/*messages*/}
+        />
         <Route path="/news" element={<News />} />
         <Route path="/music" element={<Music />} />
         <Route path="/settings" element={<Settings />} />

@@ -1,13 +1,22 @@
 import styles from "./Post.module.css";
-import ProfileInfo from "../../ProfileInfo/ProfileInfo";
+import photo from "../../../../assets/img/artur.jpg";
 
 const Post = (props) => {
   return (
     <div className={styles.post}>
-      <ProfileInfo />
+      <div className={styles.info_block}>
+        <img className={styles.post_avatar} src={photo} alt="photo" />
+        <p>{props.name}</p>
+      </div>
+
       <div className={styles.textBlock}>
-        <p>{props.message}</p>
-        <p>likes = {props.likes}</p>
+        <div className={styles.header_block}>
+          <p>{props.message}</p>
+          <p>Phone: {props.phone}</p>
+        </div>
+        <div className={styles.footer_block}>
+          <p>Likes: </p>
+        </div>
       </div>
     </div>
   );
