@@ -1,5 +1,5 @@
 import styles from "./Post.module.css";
-import photo from "../../../../assets/img/artur.jpg";
+import photo from "../../../../assets/img/avatar.jpg";
 
 const Post = (props) => {
   return (
@@ -15,7 +15,7 @@ const Post = (props) => {
           <p>Phone: {props.phone}</p>
         </div>
         <div className={styles.footer_block}>
-          <p>Likes: </p>
+          <p>Likes:{props.likes} </p>
         </div>
       </div>
     </div>

@@ -3,16 +3,28 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import {
+  addPost,
+  subscriber,
+  updateNewPostText,
+} from "./components/redux/state";
 import state from "./components/redux/state";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <App dialogsData={state} />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+const renderEntireTree = (state) => {
+  root.render(
+    <React.StrictMode>
+      <App
+        dialogsData={state}
+        addPost={addPost}
+        updateNewPostText={updateNewPostText}
+      />
+    </React.StrictMode>
+  );
+};
+
+renderEntireTree(state);
+subscriber(renderEntireTree);
+
 reportWebVitals();

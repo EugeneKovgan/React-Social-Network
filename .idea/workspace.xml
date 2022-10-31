@@ -2,30 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a2496da-247b-49d6-9da2-171269a6d3b5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/MainBlock/MainBlock.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MainBlock/MainBlock.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/redux/state.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/img/artur.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Content/Content.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Content.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/Content.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/Content.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer/Footer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/Footer.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/Navbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/Dialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/Dialog.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/Dialog.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/Dialog.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainBlock/MainBlock.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainBlock/MainBlock.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/Post/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/Post/Post.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/Post/Post.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/Post/Post.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/redux/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/redux/state.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="FormatOnSaveOptions">
     <option name="myRunOnSave" value="true" />
@@ -47,21 +48,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/JS/react-social-network",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\jugin\\AppData\\Roaming\\npm\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "editor.breadcrumbs",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/JS/react-social-network&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\jugin\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;liveEdit&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\JS\react-social-network\src\components\Dialogs" />
@@ -135,7 +136,14 @@
       <workItem from="1667067468971" duration="660000" />
       <workItem from="1667072131537" duration="572000" />
       <workItem from="1667127189051" duration="27000" />
-      <workItem from="1667129940129" duration="10697000" />
+      <workItem from="1667129940129" duration="11695000" />
+      <workItem from="1667163718908" duration="1221000" />
+      <workItem from="1667208143741" duration="627000" />
+      <workItem from="1667209966277" duration="1018000" />
+      <workItem from="1667213223705" duration="8627000" />
+      <workItem from="1667226652432" duration="4536000" />
+      <workItem from="1667240721068" duration="27000" />
+      <workItem from="1667240750101" duration="2205000" />
     </task>
     <servers />
   </component>
@@ -152,5 +160,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/redux/state.js</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

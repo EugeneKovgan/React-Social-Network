@@ -1,5 +1,5 @@
 import styles from "./ProfileInfo.module.css";
-import photo from "../../../assets/img/artur.jpg";
+import photo from "../../../assets/img/avatar.jpg";
 
 const ProfileInfo = (props) => {
   return (
