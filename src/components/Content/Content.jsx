@@ -5,9 +5,8 @@ import Music from "../Music/Music";
 import Settings from "../Settings/Settings";
 import { Route, Routes } from "react-router-dom";
 import Dialogs from "../Dialogs/Dialog";
-import { updateNewPostText } from "../redux/state";
 
-const Content = ({ dialogsData, addPost }) => {
+const Content = ({ state, addPost,updateNewPostText }) => {
   return (
     <div className={styles.content}>
       <Routes>
@@ -15,7 +14,7 @@ const Content = ({ dialogsData, addPost }) => {
           path="/profile"
           element={
             <Profile
-              dialogsData={dialogsData}
+                state={state}
               addPost={addPost}
               updateNewPostText={updateNewPostText}
             />
@@ -23,7 +22,7 @@ const Content = ({ dialogsData, addPost }) => {
         />
         <Route
           path="/dialogs/*"
-          element={<Dialogs dialogsData={dialogsData} />}
+          element={<Dialogs state={state} />}
         />
         <Route path="/news" element={<News />} />
         <Route path="/music" element={<Music />} />

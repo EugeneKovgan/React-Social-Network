@@ -2,11 +2,10 @@ import React from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = ({ dialogsData, addPost, updateNewPostText }) => {
+const MyPosts = ({ state, addPost, updateNewPostText }) => {
   let newPostElement = React.createRef();
   const click = () => {
     addPost();
-    // updateNewPostText("");
   };
 
   const onPostChange = () => {
@@ -20,13 +19,13 @@ const MyPosts = ({ dialogsData, addPost, updateNewPostText }) => {
         <textarea
           onChange={onPostChange}
           ref={newPostElement}
-          value={dialogsData.profilePage.newPostText}
+          value={state.profilePage.newPostText}
         />
         <button onClick={click}>App post</button>
       </div>
 
       <div className={styles.postList}>
-        {dialogsData.profilePage.posts.map((item) => {
+        {state.profilePage.posts.map((item) => {
           return (
             <Post
               key={item.id}

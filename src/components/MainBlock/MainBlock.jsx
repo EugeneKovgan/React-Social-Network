@@ -3,14 +3,14 @@ import Navbar from "../Navbar/Navbar";
 import Content from "../Content/Content";
 import { updateNewPostText } from "../redux/state";
 
-const MainBlock = ({ dialogsData, addPost }) => {
+const MainBlock = ({ state, addPost,updateNewPostText}) => {
   return (
     <div className={styles.mainBlock}>
       <Navbar />
       <Content
-        dialogsData={dialogsData}
-        addPost={addPost}
-        updateNewPostText={updateNewPostText}
+          state={state}
+          addPost={addPost}
+          updateNewPostText={updateNewPostText}
       />
     </div>
   );
