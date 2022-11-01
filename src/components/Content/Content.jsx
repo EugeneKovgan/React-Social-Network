@@ -6,7 +6,7 @@ import Settings from "../Settings/Settings";
 import { Route, Routes } from "react-router-dom";
 import Dialogs from "../Dialogs/Dialog";
 
-const Content = ({ state, addPost,updateNewPostText }) => {
+const Content = ({ state, dispatch }) => {
   return (
     <div className={styles.content}>
       <Routes>
@@ -15,8 +15,7 @@ const Content = ({ state, addPost,updateNewPostText }) => {
           element={
             <Profile
                 state={state}
-              addPost={addPost}
-              updateNewPostText={updateNewPostText}
+                dispatch={dispatch}
             />
           }
         />
