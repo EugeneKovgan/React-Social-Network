@@ -1,0 +1,12 @@
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.message {
+  border: 1px solid #efeae1;
+  background: rgba(239, 234, 225, 0.2);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
