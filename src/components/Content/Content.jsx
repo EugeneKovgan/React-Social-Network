@@ -6,23 +6,15 @@ import Settings from "../Settings/Settings";
 import { Route, Routes } from "react-router-dom";
 import Dialogs from "../Dialogs/Dialog";
 
-const Content = ({ state, dispatch }) => {
+const Content = ({ state, dispatch, store }) => {
   return (
     <div className={styles.content}>
       <Routes>
         <Route
           path="/profile"
-          element={
-            <Profile
-                state={state}
-                dispatch={dispatch}
-            />
-          }
+          element={<Profile state={state} dispatch={dispatch} />}
         />
-        <Route
-          path="/dialogs/*"
-          element={<Dialogs state={state} />}
-        />
+        <Route path="/dialogs/*" element={<Dialogs store={store} />} />
         <Route path="/news" element={<News />} />
         <Route path="/music" element={<Music />} />
         <Route path="/settings" element={<Settings />} />

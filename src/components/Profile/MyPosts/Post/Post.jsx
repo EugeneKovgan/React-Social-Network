@@ -1,11 +1,11 @@
-import styles from "./Post.module.css";
-import photo from "../../../../assets/img/avatar.jpg";
+import styles from './Post.module.css';
+import photo from '../../../../assets/img/avatar.jpg';
 
 const Post = (props) => {
   return (
     <div className={styles.post}>
       <div className={styles.info_block}>
-        <img className={styles.post_avatar} src={photo} alt="photo" />
+        <img className={styles.post_avatar} src={photo} alt='photo' />
         <p>{props.name}</p>
       </div>
 
