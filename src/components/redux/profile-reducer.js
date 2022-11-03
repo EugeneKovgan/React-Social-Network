@@ -1,7 +1,31 @@
 const ADD_POS = "ADD-POST";
 const UPDATE_NEW_TEXT = "UPDATE_NEW_TEXT";
 
-const profileReducer = (state, action) => {
+let initialState = {
+  posts: [
+    {
+      id: 1,
+      name: "Leanne Graham",
+      message: "Multi-layered client-server neural-net",
+      likesCount: 15,
+    },
+    {
+      id: 2,
+      name: "Ervin Howell",
+      message: "Proactive didactic contingency",
+      likesCount: 12,
+    },
+    {
+      id: 3,
+      name: "Clementine Bauch",
+      message: "Face to face bifurcated interface",
+      likesCount: 17,
+    },
+  ],
+  newPostText: "",
+};
+
+const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POS:
       let newPost = {

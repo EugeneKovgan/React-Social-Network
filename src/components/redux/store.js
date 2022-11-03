@@ -51,15 +51,21 @@ const store = {
   getState() {
     return this._state;
   },
-  subscriber(observer) {
+  subscribe(observer) {
     this._callSubscriber = observer;
   },
 
   dispatch(action) {
-    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
-    this._state.profilePage = profileReducer(this._state.profilePage, action);
-    //this._state.dialogsPage = dialogsReducer(this.getState().dialogsPage, action);
-    //this._state.profilePage = profileReducer(this.getState().profilePage, action);
+    // this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    // this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(
+      this.getState().dialogsPage,
+      action
+    );
+    this._state.profilePage = profileReducer(
+      this.getState().profilePage,
+      action
+    );
 
     this._callSubscriber(this._state);
   },
