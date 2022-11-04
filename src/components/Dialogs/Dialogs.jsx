@@ -1,21 +1,17 @@
-import styles from "./Dialog.module.css";
+import styles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import React from "react";
-import store, {
-  sendMessageCreator,
-  updateNewMessageBodyCreator,
-} from "../redux/dialogs-reducer";
 
-const Dialogs = ({ store }) => {
-  let state = store.getState().dialogsPage;
+const Dialogs = ({ dialogsPage, updateNewMessageBody, SendMessage }) => {
+  let state = dialogsPage;
   let newMessageBody = state.newMessageBody;
-  const click = () => {
-    store.dispatch(sendMessageCreator());
+  const onSendMessageClick = () => {
+    SendMessage();
   };
   let onNewMessageChange = (e) => {
     let body = e.target.value;
-    store.dispatch(updateNewMessageBodyCreator(body));
+    updateNewMessageBody(body);
   };
 
   return (
@@ -31,7 +27,7 @@ const Dialogs = ({ store }) => {
         })}
         <div className={styles.newPostBlock}>
           <textarea value={newMessageBody} onChange={onNewMessageChange} />
-          <button onClick={click}>App post</button>
+          <button onClick={onSendMessageClick}>App post</button>
         </div>
       </div>
     </div>

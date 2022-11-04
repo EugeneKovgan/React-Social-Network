@@ -2,11 +2,11 @@ import styles from "./MainBlock.module.css";
 import Navbar from "../Navbar/Navbar";
 import Content from "../Content/Content";
 
-const MainBlock = ({ state, dispatch, store }) => {
+const MainBlock = ({ store }) => {
   return (
     <div className={styles.mainBlock}>
       <Navbar />
-      <Content state={state} dispatch={dispatch} store={store} />
+      <Content store={store} />
     </div>
   );
 };
