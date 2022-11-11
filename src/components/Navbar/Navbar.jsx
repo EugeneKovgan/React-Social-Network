@@ -25,6 +25,16 @@ const Navbar = () => {
             Messages
           </NavLink>
         </li>
+        <li className={styles.nav_list__item}>
+          <NavLink
+            to="/users"
+            className={(navData) =>
+              navData.isActive ? styles.active : styles.nav_list__item
+            }
+          >
+            Users
+          </NavLink>
+        </li>
 
         <br />
 
