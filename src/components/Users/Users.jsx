@@ -3,16 +3,20 @@ import styles from "./Users.module.css";
 import avatar from "../../assets/img/avatar.jpg";
 
 const Users = (props) => {
-  if (props.users.length == 0) {
-    axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
-      .then((response) => {
-        props.setUsers(response.data.items);
-      });
-  }
+  const getUsers = () => {
+    if (props.users.length == 0) {
+      axios
+        .get("https://social-network.samuraijs.com/api/1.0/users")
+        .then((response) => {
+          props.setUsers(response.data.items);
+        });
+    }
+  };
 
   return (
     <div className={styles.users_list}>
+      <button onClick={getUsers}>get users</button>
+
       {props.users.map((item) => (
         <div className={styles.user} key={item.id}>
           <img
