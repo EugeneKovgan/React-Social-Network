@@ -5,12 +5,12 @@ import Header from "./components/Header/Header";
 import MainBlock from "./components/MainBlock/MainBlock";
 import { BrowserRouter } from "react-router-dom";
 
-const App = ({ state, dispatch, store }) => {
+const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
-        <MainBlock state={state} dispatch={dispatch} store={store} />
+        <MainBlock />
         <Footer />
       </div>
     </BrowserRouter>

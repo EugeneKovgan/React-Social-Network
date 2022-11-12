@@ -1,20 +1,16 @@
 import React from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {
-  addPostActionCreator,
-  updateNewPostTextActionCreator,
-} from "../../redux/state";
 
-const MyPosts = ({ state, dispatch }) => {
+const MyPosts = ({ updateNewPostText, addPost, posts, newPostText }) => {
   let newPostElement = React.createRef();
-  const click = () => {
-    dispatch(addPostActionCreator());
+  const onAddPost = () => {
+    addPost();
   };
 
   const onPostChange = () => {
     let text = newPostElement.current.value;
-    dispatch(updateNewPostTextActionCreator(text));
+    updateNewPostText(text);
   };
 
   return (
@@ -22,14 +18,14 @@ const MyPosts = ({ state, dispatch }) => {
       <div className={styles.newPostBlock}>
         <textarea
           onChange={onPostChange}
+          value={newPostText}
           ref={newPostElement}
-          value={state.profilePage.newPostText}
         />
-        <button onClick={click}>App post</button>
+        <button onClick={onAddPost}>App post</button>
       </div>
 
       <div className={styles.postList}>
-        {state.profilePage.posts.map((item) => {
+        {posts.map((item) => {
           return (
             <Post
               key={item.id}

@@ -12,6 +12,8 @@
 .myPosts .newPostBlock textarea {
   height: 3rem;
   border-radius: 0.5rem;
+  padding: 0.5rem;
+
 }
 
 .myPosts .newPostBlock button {

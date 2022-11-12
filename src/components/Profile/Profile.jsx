@@ -1,12 +1,12 @@
-import MyPosts from './MyPosts/MyPosts';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
-import styles from './Profile.module.css';
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import styles from "./Profile.module.css";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-const Profile = ({ state, dispatch }) => {
+const Profile = () => {
   return (
     <main className={styles.profile}>
       <ProfileInfo />
-      <MyPosts state={state} dispatch={dispatch} />
+      <MyPostsContainer />
     </main>
   );
 };
