@@ -1,38 +1,27 @@
+import axios from "axios";
+import styles from "./Users.module.css";
+import avatar from "../../assets/img/avatar.jpg";
+
 const Users = (props) => {
   if (props.users.length == 0) {
-    props.setUsers([
-      {
-        id: 1,
-        fullName: "Leanne Graham",
-        status: "User-centric fault-tolerant solution",
-        location: "Gwenborough",
-        country: "BY",
-        followed: true,
-      },
-      {
-        id: 2,
-        fullName: "Ervin Howell",
-        status: "Synchronised bottom-line interface",
-        location: "Wisokyburgh",
-        country: "BY",
-        followed: false,
-      },
-      {
-        id: 3,
-        fullName: "Clementine Bauch",
-        status: "Configurable multimedia task-force",
-        location: "McKenziehaven",
-        country: "BY",
-        followed: true,
-      },
-    ]);
+    axios
+      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .then((response) => {
+        props.setUsers(response.data.items);
+      });
   }
 
   return (
-    <div>
+    <div className={styles.users_list}>
       {props.users.map((item) => (
-        <div key={item.id}>
-          <span>{item.fullName}</span>
+        <div className={styles.user} key={item.id}>
+          <img
+            className={styles.avatar}
+            src={item.photos.small ? item.photos.small : avatar}
+            alt="avatar"
+          />
+
+          <span>{item.name}</span>
           {item.followed ? (
             <button
               onClick={() => {
