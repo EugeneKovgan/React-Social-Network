@@ -2,8 +2,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-
-
 }
 
 .users_list {
@@ -21,17 +19,24 @@
     border-radius: 0.5rem;
 }
 
-.avatar {
-    height: 2.2rem;
+.user .avatar {
+    height: 3rem;
     border-radius: 50%;
 }
 
-.pagesCounterBlock {
+.user .informBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
+.user .informBlock button {
+    width: 5rem;
+}
+
+.pagesCounterBlock {
     display: flex;
     gap: 0.5rem;
-
-
 }
 
 .page {
@@ -40,4 +45,11 @@
 
 .selectedPage {
     color: #D197F0;
+    border: 1px solid #D197F0;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    margin-top: -1px;
+
 }
