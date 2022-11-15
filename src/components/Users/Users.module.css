@@ -1,3 +1,11 @@
+.usersMainBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+
+}
+
 .users_list {
     display: flex;
     flex-direction: column;
@@ -7,7 +15,6 @@
 .user {
     display: flex;
     gap: 1rem;
-    /*align-items: center;*/
     justify-content: flex-start;
     border: 1px solid #efeae1;
     padding: 0.5rem;
@@ -17,4 +24,20 @@
 .avatar {
     height: 2.2rem;
     border-radius: 50%;
+}
+
+.pagesCounterBlock {
+
+    display: flex;
+    gap: 0.5rem;
+
+
+}
+
+.page {
+    cursor: pointer;
+}
+
+.selectedPage {
+    color: #D197F0;
 }
