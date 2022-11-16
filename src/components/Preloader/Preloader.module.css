@@ -1,0 +1,7 @@
+.mainBlockForLoader {
+    display: flex;
+    justify-content: center;
+}
+
+.loader {
+}
