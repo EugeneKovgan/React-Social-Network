@@ -1,4 +1,4 @@
-import React from "react";
+import {Component} from "react";
 import axios from "axios";
 import {connect} from "react-redux";
 import Users from "./Users";
@@ -12,7 +12,7 @@ import {
     setIsFetching,
 } from "../redux/users-reducer";
 
-class UsersContainer extends React.Component {
+class UsersContainer extends Component {
     componentDidMount() {
         this.props.setIsFetching(true)
         console.log("componentDidMount_UsersContainer");

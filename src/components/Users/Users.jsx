@@ -1,5 +1,6 @@
 import styles from "./Users.module.css";
 import avatar from "../../assets/img/avatar.jpg";
+import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
     const usersCount = props.totalUsersCount;
@@ -14,6 +15,7 @@ const Users = (props) => {
     }
 
     return (
+
         <div className={styles.usersMainBlock}>
             <div className={styles.total}>Total users count: <p>{usersCount}</p></div>
 
@@ -36,12 +38,15 @@ const Users = (props) => {
 
             <div className={styles.users_list}>
                 {props.users.map((item) => (
+
                     <div className={styles.user} key={item.id}>
-                        <img
-                            className={styles.avatar}
-                            src={item.photos.small ? item.photos.small : avatar}
-                            alt="avatar"
-                        />
+                        <NavLink to={`/profile/${item.id}`}>
+                            <img
+                                className={styles.avatar}
+                                src={item.photos.small ? item.photos.small : avatar}
+                                alt="avatar"
+                            />
+                        </NavLink>
                         <div className={styles.informBlock}>
                             <span>{item.name}</span>
                             {item.followed ? (
@@ -63,9 +68,11 @@ const Users = (props) => {
                             )}
                         </div>
                     </div>
+
                 ))}
             </div>
         </div>
+
     );
 };
 
