@@ -44,12 +44,23 @@
 }
 
 .selectedPage {
-    color: #D197F0;
+    /*color: #D197F0;*/
     border: 1px solid #D197F0;
     border-radius: 50%;
     height: 20px;
     width: 20px;
     text-align: center;
     margin-top: -1px;
+}
 
+.total {
+    display: flex;
+    align-items: center;
+}
+
+.total p {
+    margin-left: 0.3rem;
+    padding: 0.1rem 0.2rem;
+    border: 1px solid #D197F0;
+    border-radius: 0.3rem;
 }
