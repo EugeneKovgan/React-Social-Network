@@ -1,11 +1,16 @@
 .ProfileInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .ProfileInfo img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.infoblock {
+    display: flex;
+    flex-direction: column;
 }
