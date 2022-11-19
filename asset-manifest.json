@@ -1,18 +1,17 @@
 {
   "files": {
-    "main.css": "/react-social-network/static/css/main.9bdf39a2.css",
-    "main.js": "/react-social-network/static/js/main.b345b70d.js",
+    "main.css": "/react-social-network/static/css/main.4a2191ae.css",
+    "main.js": "/react-social-network/static/js/main.df57400e.js",
     "static/js/787.8bc1f637.chunk.js": "/react-social-network/static/js/787.8bc1f637.chunk.js",
-    "static/media/logo_thyme.svg": "/react-social-network/static/media/logo_thyme.e662f57d0050ae1c3b594ef246a62593.svg",
+    "static/media/logo_thyme.svg": "/react-social-network/static/media/logo_thyme.53cfa8b8bb5f71eb8fb3255b4dbd99c1.svg",
     "static/media/eva_github-outline.svg": "/react-social-network/static/media/eva_github-outline.216d00ec701728be8f07935798280e63.svg",
-    "static/media/loader.svg": "/react-social-network/static/media/loader.469acfd90652ffd2c2f07c4e32b663a6.svg",
     "index.html": "/react-social-network/index.html",
-    "main.9bdf39a2.css.map": "/react-social-network/static/css/main.9bdf39a2.css.map",
-    "main.b345b70d.js.map": "/react-social-network/static/js/main.b345b70d.js.map",
+    "main.4a2191ae.css.map": "/react-social-network/static/css/main.4a2191ae.css.map",
+    "main.df57400e.js.map": "/react-social-network/static/js/main.df57400e.js.map",
     "787.8bc1f637.chunk.js.map": "/react-social-network/static/js/787.8bc1f637.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9bdf39a2.css",
-    "static/js/main.b345b70d.js"
+    "static/css/main.4a2191ae.css",
+    "static/js/main.df57400e.js"
   ]
 }
