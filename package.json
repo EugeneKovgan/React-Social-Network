@@ -44,5 +44,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://nameaccount.github.io/react-social-network/"
+  "homepage": "https://nameaccount.github.io/react-social-network/",
+  "devDependencies": {
+    "prettier": "2.7.1"
+  }
 }

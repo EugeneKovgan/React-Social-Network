@@ -1,66 +1,78 @@
 .usersMainBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .users_list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .user {
-    display: flex;
-    gap: 1rem;
-    justify-content: flex-start;
-    border: 1px solid #efeae1;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  border: 1px solid #efeae1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .user .avatar {
-    height: 3rem;
-    border-radius: 50%;
+  height: 3rem;
+  border-radius: 50%;
 }
 
 .user .informBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .user .informBlock button {
-    width: 5rem;
+  cursor: pointer;
+  width: 5rem;
+  height: 1.7rem;
+  border-radius: 0.5rem;
+}
+
+.informBlock .follow {
+  background-color: #afcbf0;
+  border: none;
+}
+.informBlock .unfollow {
+  background-color: #f0c9c5;
+  border: none;
 }
 
 .pagesCounterBlock {
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .page {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .selectedPage {
-    /*color: #D197F0;*/
-    border: 1px solid #D197F0;
-    border-radius: 50%;
-    height: 20px;
-    width: 20px;
-    text-align: center;
-    margin-top: -1px;
+  /*color: #D197F0;*/
+  border: 1px solid #d197f0;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  margin-top: -1px;
 }
 
 .total {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .total p {
-    margin-left: 0.3rem;
-    padding: 0.1rem 0.2rem;
-    border: 1px solid #D197F0;
-    border-radius: 0.3rem;
+  margin-left: 0.3rem;
+  padding: 0.1rem 0.2rem;
+  border: 1px solid #d197f0;
+  border-radius: 0.3rem;
 }
