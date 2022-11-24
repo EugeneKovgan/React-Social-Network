@@ -17,7 +17,7 @@ class ProfileContainer extends Component {
     console.log("ProfileContainer_componentDidMount");
     let userId = this.props.match.params.userId;
     if (!userId) {
-      userId = 21546;
+      userId = userAPI.userId;
     }
     userAPI.getProfileInfo(userId).then((response) => {
       this.props.setUserProfile(response);

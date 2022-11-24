@@ -52,12 +52,17 @@ const Users = (props) => {
               <span>{item.name}</span>
               {item.followed ? (
                 <button
+                  disabled={props.followingInProgress.some(
+                    (id) => id === item.id
+                  )}
                   className={styles.unfollow}
                   onClick={() => {
+                    props.setFollowingProgress(true, item.id);
                     userAPI.unfollow(item).then((response) => {
                       if (response.data.resultCode === 0) {
                         props.unfollow(item.id);
                       }
+                      props.setFollowingProgress(false, item.id);
                     });
                   }}
                 >
@@ -65,12 +70,17 @@ const Users = (props) => {
                 </button>
               ) : (
                 <button
+                  disabled={props.followingInProgress.some(
+                    (id) => id === item.id
+                  )}
                   className={styles.follow}
                   onClick={() => {
+                    props.setFollowingProgress(true, item.id);
                     userAPI.follow(item).then((response) => {
                       if (response.data.resultCode === 0) {
                         props.follow(item.id);
                       }
+                      props.setFollowingProgress(false, item.id);
                     });
                   }}
                 >
