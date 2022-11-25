@@ -30,11 +30,11 @@ export const userAPI = {
     });
   },
 
-  unfollow(item) {
-    return instance.delete(`follow/${item.id}`, {});
+  unfollow(userId) {
+    return instance.delete(`follow/${userId}`, {});
   },
 
-  follow(item) {
-    return instance.post(`follow/${item.id}`, {});
+  follow(userId) {
+    return instance.post(`follow/${userId}`, {});
   },
 };

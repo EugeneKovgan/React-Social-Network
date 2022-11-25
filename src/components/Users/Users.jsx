@@ -2,6 +2,7 @@ import styles from "./Users.module.css";
 import avatar from "../../assets/img/avatar.jpg";
 import { NavLink } from "react-router-dom";
 import { userAPI } from "../../api/api";
+// import { follow, unfollow } from "../redux/users-reducer";
 
 const Users = (props) => {
   const usersCount = props.totalUsersCount;
@@ -57,13 +58,7 @@ const Users = (props) => {
                   )}
                   className={styles.unfollow}
                   onClick={() => {
-                    props.setFollowingProgress(true, item.id);
-                    userAPI.unfollow(item).then((response) => {
-                      if (response.data.resultCode === 0) {
-                        props.unfollow(item.id);
-                      }
-                      props.setFollowingProgress(false, item.id);
-                    });
+                    props.unfollow(item.id);
                   }}
                 >
                   Unfollow
@@ -75,13 +70,7 @@ const Users = (props) => {
                   )}
                   className={styles.follow}
                   onClick={() => {
-                    props.setFollowingProgress(true, item.id);
-                    userAPI.follow(item).then((response) => {
-                      if (response.data.resultCode === 0) {
-                        props.follow(item.id);
-                      }
-                      props.setFollowingProgress(false, item.id);
-                    });
+                    props.follow(item.id);
                   }}
                 >
                   Follow
