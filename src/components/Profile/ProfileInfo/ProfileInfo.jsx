@@ -8,8 +8,10 @@ const ProfileInfo = (props) => {
   return (
     <div className={styles.ProfileInfo}>
       <ProfileStatus
+        updateStatus={props.updateStatus}
         status={
-          "Дублируешь? Ты го$ноко&ер! Оторвать тебе руку! Ты больше не самурай!"
+          props.status
+          // "Дублируешь? Ты го$ноко&ер! Оторвать тебе руку! Ты больше не самурай!"
         }
       />
       <img
