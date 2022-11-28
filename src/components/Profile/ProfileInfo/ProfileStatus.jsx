@@ -24,7 +24,15 @@ class ProfileStatus extends Component {
     this.setState({ status: e.currentTarget.value });
   };
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log("ProfileStatus_componentDidUpdate");
+    if (prevProps.status !== this.props.status) {
+      this.setState({ status: this.props.status });
+    }
+  }
+
   render() {
+    console.log("ProfileStatus_render");
     return (
       <div className={styles.ProfileInfo}>
         <div className={styles.statusBlock}>
