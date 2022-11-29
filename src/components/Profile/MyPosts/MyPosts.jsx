@@ -1,43 +1,49 @@
 import React from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import { Field, reduxForm } from "redux-form";
 
-const MyPosts = ({updateNewPostText, addPost, posts, newPostText}) => {
-    let newPostElement = React.createRef();
-    const onAddPost = () => {
-        addPost();
-    };
+const MyPosts = ({ addPost, posts }) => {
+  const onAddPost = (message) => {
+    addPost(message.newPost);
+  };
 
-    const onPostChange = () => {
-        let text = newPostElement.current.value;
-        updateNewPostText(text);
-    };
-
-    return (
-        <div className={styles.myPosts}>
-            <div className={styles.newPostBlock}>
-        <textarea
-            onChange={onPostChange}
-            value={newPostText}
-            ref={newPostElement}
-        />
-                <button onClick={onAddPost}>App post</button>
-            </div>
-
-            <div className={styles.postList}>
-                {posts.map((item) => {
-                    return (
-                        <Post
-                            key={item.id}
-                            message={item.message}
-                            name={item.name}
-                            likes={item.likesCount}
-                        />
-                    );
-                })}
-            </div>
-        </div>
-    );
+  return (
+    <div className={styles.myPosts}>
+      <PostReduxForm onSubmit={onAddPost} />
+      <div className={styles.postList}>
+        {posts.map((item) => {
+          return (
+            <Post
+              key={item.id}
+              message={item.message}
+              name={item.name}
+              likes={item.likesCount}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
 };
+
+const ReduxForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit} className={styles.newPostBlock}>
+      <Field
+        className={styles.newPostForm}
+        component={"textarea"}
+        type={"text"}
+        placeholder={"New post"}
+        name={"newPost"}
+      />
+      <button>App post</button>
+    </form>
+  );
+};
+
+const PostReduxForm = reduxForm({
+  form: "newPost",
+})(ReduxForm);
 
 export default MyPosts;
