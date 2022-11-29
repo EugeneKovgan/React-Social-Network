@@ -54,7 +54,6 @@ export const profileAPI = {
 export const authAPI = {
   getAuthMe() {
     return instance.get(`auth/me`, {}).then((response) => {
-      console.log(response);
       return response.data;
     });
   },
