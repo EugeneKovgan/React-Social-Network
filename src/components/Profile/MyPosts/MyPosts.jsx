@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import { Field, reduxForm } from "redux-form";
+import { requiredField, Textarea } from "../../utils/validators";
 
 const MyPosts = ({ addPost, posts }) => {
   const onAddPost = (message) => {
@@ -32,10 +33,12 @@ const ReduxForm = (props) => {
     <form onSubmit={props.handleSubmit} className={styles.newPostBlock}>
       <Field
         className={styles.newPostForm}
-        component={"textarea"}
+        // component={"textarea"}
+        component={Textarea}
         type={"text"}
         placeholder={"New post"}
         name={"newPost"}
+        validate={requiredField}
       />
       <button>App post</button>
     </form>

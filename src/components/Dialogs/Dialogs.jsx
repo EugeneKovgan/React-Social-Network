@@ -4,6 +4,7 @@ import Message from "./Message/Message";
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
+import { requiredField, Textarea } from "../utils/validators";
 
 const Dialogs = ({ dialogsPage, SendMessage, isAuth }) => {
   let state = dialogsPage;
@@ -36,8 +37,10 @@ const AddMessageForm = (props) => {
     <form onSubmit={props.handleSubmit} className={styles.newPostBlock}>
       <Field
         component={"textarea"}
+        component={Textarea}
         name={"newMessageBody"}
         placeholder={"new message"}
+        validate={requiredField}
       />
       <button>App post</button>
     </form>
