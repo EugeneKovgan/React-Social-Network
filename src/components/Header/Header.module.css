@@ -30,3 +30,13 @@
     align-items: center;
     gap: 0.5rem;
 }
+
+.loginBlock {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+}
+
+.logOut {
+    font-size: 12px;
+}

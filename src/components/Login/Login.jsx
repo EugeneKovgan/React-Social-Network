@@ -1,5 +1,8 @@
 import styles from "./Login.module.css";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { login } from "../redux/auth-reducer";
+import { NavLink } from "react-router-dom";
 
 const LoginForm = (props) => {
   return (
@@ -7,15 +10,16 @@ const LoginForm = (props) => {
       <Field
         component={"input"}
         type={"text"}
-        placeholder={"login"}
-        name={"login"}
+        placeholder={"email"}
+        name={"email"}
       />
       <Field
         component={"input"}
-        type={"text"}
+        type={"password"}
         placeholder={"password"}
         name={"password"}
       />
+
       <Field component={"input"} type={"checkbox"} name={"rememberMe"} />
       <button>submit</button>
     </form>
@@ -29,7 +33,13 @@ const LoginReduxForm = reduxForm({
 const Login = (props) => {
   const onSubmit = (formData) => {
     console.log(formData);
+    props.login(formData.email, formData.password, formData.rememberMe);
   };
+
+  if (props.isAuth) {
+    return <NavLink to="/profile" />;
+  }
+
   return (
     <div className={styles.formBlock}>
       <LoginReduxForm onSubmit={onSubmit} />
@@ -37,4 +47,8 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+});
+
+export default connect(mapStateToProps, { login })(Login);
