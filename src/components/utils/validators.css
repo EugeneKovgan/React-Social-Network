@@ -2,14 +2,15 @@
     position: relative;
 }
 
-.errorBlock textarea {
+.errorBlock textarea,
+.errorBlock input {
     border-radius: 0.5rem;
 }
 
 .error_border {
-
     border: 1px solid red;
     border-radius: 0.5rem;
+    color: red;
 }
 
 .error {
@@ -18,3 +19,5 @@
     padding: 0.2rem;
     left: 0;
 }
+
+

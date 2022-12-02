@@ -3,24 +3,29 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { login } from "../redux/auth-reducer";
 import { NavLink } from "react-router-dom";
+import { Input } from "../utils/validators";
 
 const LoginForm = (props) => {
   return (
-    <form onSubmit={props.handleSubmit} className={styles.form}>
+    <form
+      onSubmit={props.handleSubmit}
+      className={!props.error ? styles.form : styles.commonErrors}
+    >
       <Field
-        component={"input"}
+        component={Input}
         type={"text"}
         placeholder={"email"}
         name={"email"}
       />
       <Field
-        component={"input"}
+        component={Input}
         type={"password"}
         placeholder={"password"}
         name={"password"}
       />
 
       <Field component={"input"} type={"checkbox"} name={"rememberMe"} />
+      <div>{props.error}</div>
       <button>submit</button>
     </form>
   );

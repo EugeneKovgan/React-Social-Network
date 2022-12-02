@@ -22,8 +22,7 @@ class ProfileContainer extends Component {
     console.log("ProfileContainer_componentDidMount");
     let userId = this.props.match.params.userId;
     if (!userId) {
-      userId = 21546;
-      // userId = userAPI.userId; // need to fix
+      userId = this.props.authorizedUserId;
     }
     this.props.getUserProfile(userId);
     this.props.getStatus(userId);
@@ -44,6 +43,8 @@ class ProfileContainer extends Component {
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
+  isAuth: state.auth.isAuth,
+  authorizedUserId: state.auth.id,
 });
 
 export default compose(
