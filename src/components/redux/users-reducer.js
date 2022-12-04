@@ -86,10 +86,12 @@ export const setFollowingProgress = (isFetching, userId) => ({
   userId,
 });
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (page, pageSize) => {
   return (dispatch) => {
     dispatch(setIsFetching(true));
-    userAPI.getUsers(currentPage, pageSize).then((response) => {
+    dispatch(setCurrentPage(page)); //////?????
+
+    userAPI.getUsers(page, pageSize).then((response) => {
       dispatch(setIsFetching(false));
       dispatch(setUsers(response.items));
       dispatch(setTotalUsersCount(response.totalCount));
