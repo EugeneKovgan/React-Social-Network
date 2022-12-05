@@ -2,12 +2,13 @@ import styles from "./ProfileInfo.module.css";
 import photo from "../../../assets/img/avatar.jpg";
 import Preloader from "../../Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusHooks from "./ProfileStatusHooks";
 
 const ProfileInfo = (props) => {
   if (!props.profile) return <Preloader />;
   return (
     <div className={styles.ProfileInfo}>
-      <ProfileStatus
+      <ProfileStatusHooks
         updateStatus={props.updateStatus}
         status={
           props.status

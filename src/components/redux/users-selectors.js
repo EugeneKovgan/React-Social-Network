@@ -1,6 +1,13 @@
-export const getUsers = (state) => {
+import { createSelectorHook } from "react-redux";
+
+const getUsersSelector = (state) => {
   return state.usersPage.users;
 };
+
+export const getUsers = createSelectorHook(getUsersSelector,
+  (users) => {
+    return users;
+  });
 
 export const getPageSize = (state) => {
   return state.usersPage.pageSize;
