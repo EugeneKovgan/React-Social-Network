@@ -4,7 +4,8 @@ import Post from "./Post/Post";
 import { Field, reduxForm } from "redux-form";
 import { requiredField, Textarea } from "../../utils/validators";
 
-const MyPosts = ({ addPost, posts }) => {
+const MyPosts = React.memo(props => {
+  let { addPost, posts } = props;
   const onAddPost = (message) => {
     addPost(message.newPost);
   };
@@ -13,7 +14,7 @@ const MyPosts = ({ addPost, posts }) => {
     <div className={styles.myPosts}>
       <PostReduxForm onSubmit={onAddPost} />
       <div className={styles.postList}>
-        {posts.map((item) => {
+        {[...posts].reverse().map((item) => {
           return (
             <Post
               key={item.id}
@@ -26,7 +27,7 @@ const MyPosts = ({ addPost, posts }) => {
       </div>
     </div>
   );
-};
+});
 
 const ReduxForm = (props) => {
   return (
@@ -46,7 +47,7 @@ const ReduxForm = (props) => {
 };
 
 const PostReduxForm = reduxForm({
-  form: "newPost",
+  form: "newPost"
 })(ReduxForm);
 
 export default MyPosts;
