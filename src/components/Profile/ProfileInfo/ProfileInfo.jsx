@@ -4,26 +4,26 @@ import Preloader from "../../Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 import ProfileStatusHooks from "./ProfileStatusHooks";
 
-const ProfileInfo = (props) => {
-  if (!props.profile) return <Preloader />;
+const ProfileInfo = ({ updateStatus, profile, status }) => {
+  if (!profile) return <Preloader />;
   return (
     <div className={styles.ProfileInfo}>
       <ProfileStatusHooks
-        updateStatus={props.updateStatus}
+        updateStatus={updateStatus}
         status={
-          props.status
+          status
           // "Дублируешь? Ты го$ноко&ер! Оторвать тебе руку! Ты больше не самурай!"
         }
       />
       <img
-        src={props.profile.photos.small ? props.profile.photos.small : photo}
+        src={profile.photos.small ? profile.photos.small : photo}
         alt="photo"
       />
       <div className={styles.infoblock}>
-        <p>{props.profile.fullName}</p>
-        <p>{props.profile.aboutMe}</p>
-        <p>{props.profile.contacts.facebook}</p>
-        <p>id: {props.profile.userId}</p>
+        <p>{profile.fullName}</p>
+        <p>{profile.aboutMe}</p>
+        <p>{profile.contacts.facebook}</p>
+        <p>id: {profile.userId}</p>
       </div>
     </div>
   );

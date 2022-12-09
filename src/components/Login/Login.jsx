@@ -5,11 +5,11 @@ import { login } from "../redux/auth-reducer";
 import { NavLink } from "react-router-dom";
 import { Input } from "../utils/validators";
 
-const LoginForm = (props) => {
+const LoginForm = ({ handleSubmit, error }) => {
   return (
     <form
-      onSubmit={props.handleSubmit}
-      className={!props.error ? styles.form : styles.commonErrors}
+      onSubmit={handleSubmit}
+      className={!error ? styles.form : styles.commonErrors}
     >
       <Field
         component={Input}
@@ -17,6 +17,7 @@ const LoginForm = (props) => {
         placeholder={"email"}
         name={"email"}
       />
+
       <Field
         component={Input}
         type={"password"}
@@ -25,23 +26,23 @@ const LoginForm = (props) => {
       />
 
       <Field component={"input"} type={"checkbox"} name={"rememberMe"} />
-      <div>{props.error}</div>
+      <div>{error}</div>
       <button>submit</button>
     </form>
   );
 };
 
 const LoginReduxForm = reduxForm({
-  form: "login",
+  form: "login"
 })(LoginForm);
 
-const Login = (props) => {
+const Login = ({ login, isAuth }) => {
   const onSubmit = (formData) => {
     console.log(formData);
-    props.login(formData.email, formData.password, formData.rememberMe);
+    login(formData.email, formData.password, formData.rememberMe);
   };
 
-  if (props.isAuth) {
+  if (isAuth) {
     return <NavLink to="/profile" />;
   }
 
@@ -53,7 +54,7 @@ const Login = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  isAuth: state.auth.isAuth,
+  isAuth: state.auth.isAuth
 });
 
 export default connect(mapStateToProps, { login })(Login);

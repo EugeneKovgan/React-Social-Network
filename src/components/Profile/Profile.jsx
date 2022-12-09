@@ -3,13 +3,13 @@ import styles from "./Profile.module.css";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import React from "react";
 
-const Profile = (props) => {
+const Profile = ({ profile, status, updateStatus }) => {
   return (
     <main className={styles.profile}>
       <ProfileInfo
-        profile={props.profile}
-        status={props.status}
-        updateStatus={props.updateStatus}
+        profile={profile}
+        status={status}
+        updateStatus={updateStatus}
       />
       <MyPostsContainer />
     </main>

@@ -26,7 +26,7 @@ const setAuthUserData = (id, email, login, isAuth) => ({
 
 export const getAuthUserData = () => async (dispatch) => {
   let response = await authAPI.getAuthMe();
-  if (response.resultCode === 0) {
+  if (!response.resultCode) {
     let { id, login, email } = response.data;
     dispatch(setAuthUserData(id, email, login, true));
   }
@@ -35,7 +35,7 @@ export const getAuthUserData = () => async (dispatch) => {
 export const login = (email, password, rememberMe) => async (dispatch) => {
   let response = await authAPI.login(email, password, rememberMe);
   console.log(response);
-  if (response.resultCode === 0) {
+  if (!response.resultCode) {
     dispatch(getAuthUserData());
   } else {
     let errorMessage =
@@ -46,7 +46,7 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   let response = await authAPI.logout();
-  if (response.resultCode === 0) {
+  if (!response.resultCode) {
     dispatch(setAuthUserData(null, null, null, false));
   }
 };
