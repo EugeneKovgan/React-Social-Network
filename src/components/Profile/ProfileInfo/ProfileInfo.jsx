@@ -1,7 +1,6 @@
 import styles from "./ProfileInfo.module.css";
 import photo from "../../../assets/img/avatar.jpg";
 import Preloader from "../../Preloader/Preloader";
-import ProfileStatus from "./ProfileStatus";
 import ProfileStatusHooks from "./ProfileStatusHooks";
 
 const ProfileInfo = ({ updateStatus, profile, status }) => {
