@@ -3,7 +3,7 @@ import axios from "axios";
 const instance = axios.create({
   withCredentials: true,
   baseURL: "https://social-network.samuraijs.com/api/1.0/",
-  headers: { "api-key": "0b874356-c466-4f4a-a5c1-851157f6c2a3" },
+  headers: { "api-key": "0b874356-c466-4f4a-a5c1-851157f6c2a3" }
 });
 
 export const userAPI = {
@@ -26,7 +26,7 @@ export const userAPI = {
   getProfileInfo(userId) {
     console.warn("use profileAPI ");
     profileAPI.getProfileInfo(userId);
-  },
+  }
 };
 
 export const profileAPI = {
@@ -49,6 +49,16 @@ export const profileAPI = {
         return response.data;
       });
   },
+  savePhoto(photoFile) {
+    const formData = new FormData();
+    formData.append("image", photoFile);
+
+    return instance.put("profile/photo", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    });
+  }
 };
 
 export const authAPI = {
@@ -70,5 +80,5 @@ export const authAPI = {
     return instance.delete("auth/login").then((response) => {
       return response.data;
     });
-  },
+  }
 };
