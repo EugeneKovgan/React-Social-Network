@@ -25,7 +25,10 @@ const LoginForm = ({ handleSubmit, error }) => {
         name={"password"}
       />
 
-      <Field component={"input"} type={"checkbox"} name={"rememberMe"} />
+      <Field component={"input"}
+             type={"checkbox"}
+             name={"rememberMe"} />
+      
       <div>{error}</div>
       <button>submit</button>
     </form>
@@ -38,7 +41,7 @@ const LoginReduxForm = reduxForm({
 
 const Login = ({ login, isAuth }) => {
   const onSubmit = (formData) => {
-    console.log(formData);
+    // console.log(formData);
     login(formData.email, formData.password, formData.rememberMe);
   };
 

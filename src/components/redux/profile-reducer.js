@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from "uuid";
 import { profileAPI } from "../../api/api";
-import profile from "../Profile/Profile";
 
 const ADD_POS = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
+// const SAVE_PROFILE_SUCCESS = "SAVE_PROFILE_SUCCESS";
 
 let initialState = {
   posts: [
@@ -50,6 +50,9 @@ const profileReducer = (state = initialState, action) => {
     case SAVE_PHOTO_SUCCESS:
       return { ...state, profile: { ...state.profile, photos: action.photos } };
 
+    // const SAVE_PROFILE_SUCCESS:
+    //   return {...state, profile:action.profile}
+
     default:
       return state;
   }
@@ -75,6 +78,11 @@ const savePhotoSuccess = (photos) => ({
   photos
 });
 
+// const saveProfileSuccess = (profile) => ({
+//   type: SAVE_PROFILE_SUCCESS,
+//   profile
+// });
+
 export const getUserProfile = (userId) => async (dispatch) => {
   let response = await profileAPI.getProfileInfo(userId);
   dispatch(setUserProfile(response));
@@ -96,6 +104,14 @@ export const savePhoto = (file) => async (dispatch) => {
   let response = await profileAPI.savePhoto(file);
   if (!response.data.resultCode) {
     dispatch(savePhotoSuccess(file));
+  }
+};
+
+export const saveProfile = (profile) => async (dispatch) => {
+  let response = await profileAPI.saveProfile(profile);
+  // debugger
+  if (!response.data.resultCode) {
+    // dispatch(saveProfileSuccess(profile));
   }
 };
 

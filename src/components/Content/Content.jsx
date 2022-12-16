@@ -17,7 +17,6 @@ const Settings = React.lazy(() => import ("../Settings/Settings"));
 
 class Content extends Component {
   componentDidMount() {
-    console.log("App_componentDidMount");
     this.props.InitializeApp();
   }
 
