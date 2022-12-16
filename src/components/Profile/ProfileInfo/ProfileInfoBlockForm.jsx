@@ -1,16 +1,16 @@
 import styles from "./ProfileInfo.module.css";
 import { Field, reduxForm } from "redux-form";
-import { Input } from "../../utils/validators";
+import { Input, requiredField } from "../../utils/validators";
 
-const ProfileInfoBlockForm = ({ handleSubmit, profile }) => {
+const ProfileInfoBlockForm = ({ handleSubmit, profile, error }) => {
   return (
-    <form onSubmit={handleSubmit} className={styles.infoblock}>
+    <form onSubmit={handleSubmit}
+          className={!error ? styles.infoblock : styles.commonErrors}>
       <Field
         component={Input}
         type={"text"}
         placeholder={"full name"}
         name={"fullName"}
-        require={require}
       />
 
       <Field
@@ -18,15 +18,27 @@ const ProfileInfoBlockForm = ({ handleSubmit, profile }) => {
         type={"text"}
         name={"aboutMe"}
         placeholder={"about me"}
-        require={require}
       />
+
+      <div className={styles.contacts}>
+        {Object.keys(profile.contacts).map((key) => {
+          return (
+            <Field
+              component={Input}
+              type={"text"}
+              name={`contacts.${key}`}
+              key={key}
+              placeholder={key}
+            />);
+        })}
+      </div>
 
       <p>Looking for a job:
         <Field
           component={"input"}
           type={"checkbox"}
           name={"lookingForAJob"}
-          require={require} />
+        />
       </p>
 
       <Field
@@ -34,8 +46,8 @@ const ProfileInfoBlockForm = ({ handleSubmit, profile }) => {
         type={"text"}
         placeholder={"Looking for a job description"}
         name={"LookingForAJobDescription"}
-        require={require} />
-
+      />
+      <div>{error}</div>
       <button className={styles.edit_btn}>save</button>
     </form>
   );

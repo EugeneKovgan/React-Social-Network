@@ -21,9 +21,10 @@ const ProfileInfo = ({ updateStatus, profile, status, isOwner, savePhoto, savePr
   };
 
   const onSubmit = (formData) => {
-    console.log(formData);
-    saveProfile(formData);
-    // login(formData.email, formData.password, formData.rememberMe);
+    saveProfile(formData).then(
+      () => {
+        setEditMode(false);
+      });
   };
 
   if (!profile) return <Preloader />;
@@ -39,6 +40,7 @@ const ProfileInfo = ({ updateStatus, profile, status, isOwner, savePhoto, savePr
       {editMode ? <ProfileInfoBlockForm
           profile={profile}
           onSubmit={onSubmit}
+          initialValues={profile}
         /> :
         <ProfileInfoBlock
           profile={profile}
