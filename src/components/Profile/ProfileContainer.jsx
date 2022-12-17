@@ -1,41 +1,61 @@
-import {Component} from "react";
+import React, { Component } from "react";
 import Profile from "./Profile";
-import axios from "axios";
-import {connect} from "react-redux";
-import {setUserProfile} from "../redux/profile-reducer";
-import {useParams} from 'react-router-dom';
+import { getStatus, getUserProfile, savePhoto, saveProfile, updateStatus } from "../redux/profile-reducer";
+import { useParams } from "react-router-dom";
+import { connect } from "react-redux";
+import { WithAuthRedirect } from "../../hoc/WithAuthRedirect";
+import { compose } from "redux";
 
 export function withRouter(Children) {
-    return (props) => {
-        const match = {params: useParams()};
-        return <Children {...props} match={match}/>
-    }
+  return (props) => {
+    const match = { params: useParams() };
+    return <Children {...props} match={match} />;
+  };
 }
 
 class ProfileContainer extends Component {
-    componentDidMount() {
-        let userId = this.props.match.params.userId;
-        if (!userId) {
-            userId = 21546
-        }
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-            .then(response => {
-                this.props.setUserProfile(response.data)
-            })
+  refreshProfile() {
+    let userId = this.props.match.params.userId;
+    if (!userId) {
+      userId = this.props.authorizedUserId;
     }
+    this.props.getUserProfile(userId);
+    this.props.getStatus(userId);
+  }
 
-    render() {
-        return (
-            <Profile {...this.props} profile={this.props.profile}/>
-        );
+  componentDidMount() {
+    this.refreshProfile();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.match.params.userId != prevProps.match.params.userId) {
+      this.refreshProfile();
     }
+  }
+
+  render() {
+    return (
+      <Profile
+        {...this.props}
+        isOwner={!this.props.match.params.userId}
+        profile={this.props.profile}
+        status={this.props.status}
+        updateStatus={this.props.updateStatus}
+        savePhoto={this.props.savePhoto}
+      />
+    );
+  }
 }
 
 const mapStateToProps = (state) => ({
-    profile: state.profilePage.profile
-})
+  profile: state.profilePage.profile,
+  status: state.profilePage.status,
+  isAuth: state.auth.isAuth,
+  authorizedUserId: state.auth.id
+});
 
-const WithUrlDataContainerComponent = withRouter(ProfileContainer)
-
-export default connect(mapStateToProps, {setUserProfile})(WithUrlDataContainerComponent);
+export default compose(
+  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile }),
+  withRouter,
+  WithAuthRedirect //need to fix
+)(ProfileContainer);

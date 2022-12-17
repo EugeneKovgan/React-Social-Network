@@ -2,17 +2,18 @@ import styles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import React from "react";
+import { Navigate } from "react-router-dom";
+import { Field, reduxForm } from "redux-form";
+import { requiredField, Textarea } from "../utils/validators";
 
-const Dialogs = ({ dialogsPage, updateNewMessageBody, SendMessage }) => {
+const Dialogs = ({ dialogsPage, SendMessage, isAuth }) => {
   let state = dialogsPage;
-  let newMessageBody = state.newMessageBody;
-  const onSendMessageClick = () => {
-    SendMessage();
+
+  let addNewMessage = (value) => {
+    SendMessage(value.newMessageBody);
   };
-  let onNewMessageChange = (e) => {
-    let body = e.target.value;
-    updateNewMessageBody(body);
-  };
+
+  if (!isAuth) return <Navigate to={"/login"} />;
 
   return (
     <div className={styles.dialogs}>
@@ -25,13 +26,29 @@ const Dialogs = ({ dialogsPage, updateNewMessageBody, SendMessage }) => {
         {state.messages.map((item) => {
           return <Message key={item.id} message={item.message} />;
         })}
-        <div className={styles.newPostBlock}>
-          <textarea value={newMessageBody} onChange={onNewMessageChange} />
-          <button onClick={onSendMessageClick}>App post</button>
-        </div>
       </div>
+      <AddMessageReduxForm onSubmit={addNewMessage} />
     </div>
   );
 };
+
+const AddMessageForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit} className={styles.newPostBlock}>
+      <Field
+        component={"textarea"}
+        component={Textarea}
+        name={"newMessageBody"}
+        placeholder={"new message"}
+        validate={requiredField}
+      />
+      <button>App post</button>
+    </form>
+  );
+};
+
+const AddMessageReduxForm = reduxForm({
+  form: "newMessage",
+})(AddMessageForm);
 
 export default Dialogs;

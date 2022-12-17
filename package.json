@@ -16,6 +16,8 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
+    "redux-form": "^8.3.9",
+    "redux-thunk": "^2.4.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -44,5 +46,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://nameaccount.github.io/react-social-network/"
+  "homepage": "https://nameaccount.github.io/react-social-network/",
+  "devDependencies": {
+    "prettier": "2.7.1"
+  }
 }

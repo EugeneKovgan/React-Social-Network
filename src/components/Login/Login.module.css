@@ -1,0 +1,28 @@
+.formBlock {
+}
+
+.formTitle {
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    border: 1px solid #efeae1;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.commonErrors {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    border: 1px solid #F0C9C5;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: red;
+}

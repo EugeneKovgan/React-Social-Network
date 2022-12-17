@@ -13,4 +13,32 @@
 .infoblock {
     display: flex;
     flex-direction: column;
+    border-bottom: 1px solid #efeae1;
+    border-top: 1px solid #efeae1;
+}
+
+.contacts {
+    padding-left: 1rem;
+    /*border-bottom: 1px solid #efeae1;*/
+}
+
+.edit_btn {
+    cursor: pointer;
+    height: 2rem;
+    border: 1px solid #efeae1;
+    border-radius: 0.5rem;
+}
+
+.profile_edit_form {
+}
+
+.commonErrors {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    border: 1px solid #F0C9C5;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: red;
 }

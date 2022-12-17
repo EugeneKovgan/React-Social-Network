@@ -1,21 +1,54 @@
 import styles from "./ProfileInfo.module.css";
 import photo from "../../../assets/img/avatar.jpg";
 import Preloader from "../../Preloader/Preloader";
+import ProfileStatusHooks from "./ProfileStatusHooks";
+import { useState } from "react";
+import ProfileInfoBlock from "./ProfileInfoBlock";
+import ProfileInfoBlockForm from "./ProfileInfoBlockForm";
 
-const ProfileInfo = (props) => {
-    if (!props.profile)
-        return <Preloader/>
-    return (
-        <div className={styles.ProfileInfo}>
-            <img src={props.profile.photos.small ? props.profile.photos.small : photo} alt="photo"/>
-            <div className={styles.infoblock}>
-                <p>{props.profile.fullName}</p>
-                <p>{props.profile.aboutMe}</p>
-                <p>{props.profile.contacts.facebook}</p>
-                <p>id: {props.profile.userId}</p>
-            </div>
-        </div>
-    );
+const ProfileInfo = ({ updateStatus, profile, status, isOwner, savePhoto, saveProfile }) => {
+  let [editMode, setEditMode] = useState(false);
+
+  const activateEditMode = () => {
+    setEditMode(true);
+  };
+
+  const onMainPhotoSelected = (e) => {
+    if (e.target.files.length) {
+      console.log("photo");
+      savePhoto(e.target.files[0]);
+    }
+  };
+
+  const onSubmit = (formData) => {
+    saveProfile(formData).then(
+      () => {
+        setEditMode(false);
+      });
+  };
+
+  if (!profile) return <Preloader />;
+  return (
+    <div className={styles.ProfileInfo}>
+      <ProfileStatusHooks
+        updateStatus={updateStatus}
+        isOwner={isOwner}
+        status={status}
+      />
+      <img src={profile.photos.small || photo} alt="photo" />
+      {isOwner ? <input className={styles.files_btn} onChange={onMainPhotoSelected} type="file" /> : ""}
+      {editMode ? <ProfileInfoBlockForm
+          profile={profile}
+          onSubmit={onSubmit}
+          initialValues={profile}
+        /> :
+        <ProfileInfoBlock
+          profile={profile}
+          isOwner={isOwner}
+          activateEditMode={activateEditMode}
+        />}
+    </div>
+  );
 };
 
 export default ProfileInfo;

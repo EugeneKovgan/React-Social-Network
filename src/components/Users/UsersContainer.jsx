@@ -1,82 +1,74 @@
-import {Component} from "react";
-import axios from "axios";
-import {connect} from "react-redux";
-import Users from "./Users";
-import Preloader from "../Preloader/Preloader";
+import { Component } from "react";
+import { connect } from "react-redux";
 import {
-    follow,
-    setUsers,
-    unfollow,
-    setCurrentPage,
-    setTotalUsersCount,
-    setIsFetching,
+  setCurrentPage,
+  requestUsers,
+  follow,
+  unfollow
 } from "../redux/users-reducer";
+import Preloader from "../Preloader/Preloader";
+import Users from "./Users";
+import { compose } from "redux";
+import {
+  getCurrentPage,
+  getFollowingInProgress,
+  getIsFetching,
+  getPageSize,
+  getTotalUsersCount,
+  getUsers
+} from "../redux/users-selectors";
 
 class UsersContainer extends Component {
-    componentDidMount() {
-        this.props.setIsFetching(true)
-        console.log("componentDidMount_UsersContainer");
+  componentDidMount() {
+    const { currentPage, pageSize } = this.props;
+    this.props.requestUsers(currentPage, pageSize);
+  }
 
-        axios
-            .get(
-                `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
-            )
-            .then((response) => {
-                this.props.setIsFetching(false)
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount);
-            });
-    }
+  onPageChanged = (pageNumber) => {
+    const { pageSize } = this.props;
+    this.props.setCurrentPage(pageNumber);
+    this.props.requestUsers(pageNumber, pageSize);
+  };
 
-    onPageChanged = (pageNumber) => {
-        this.props.setIsFetching(true)
-        this.props.setCurrentPage(pageNumber);
-        axios
-            .get(
-                `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
-            )
-            .then((response) => {
-                this.props.setIsFetching(false)
-                this.props.setUsers(response.data.items);
-            });
-    };
-
-    render() {
-        return (
-            <>
-                {this.props.isFetching ?
-                    <Preloader/> :
-                    <Users
-                        totalUsersCount={this.props.totalUsersCount}
-                        pageSize={this.props.pageSize}
-                        currentPage={this.props.currentPage}
-                        users={this.props.users}
-                        onPageChanged={this.onPageChanged}
-                        follow={this.props.follow}
-                        unfollow={this.props.unfollow}
-                    />
-                }
-            </>
-        );
-    }
+  render() {
+    return (
+      <>
+        {this.props.isFetching ? (
+          <Preloader />
+        ) : (
+          <Users
+            totalUsersCount={this.props.totalUsersCount}
+            pageSize={this.props.pageSize}
+            currentPage={this.props.currentPage}
+            users={this.props.users}
+            onPageChanged={this.onPageChanged}
+            follow={this.props.follow}
+            unfollow={this.props.unfollow}
+            followingInProgress={this.props.followingInProgress}
+          />
+        )}
+      </>
+    );
+  }
 }
 
 const mapStateToProps = (state) => {
-    return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
-    };
+  return {
+    users: getUsers(state),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    followingInProgress: getFollowingInProgress(state)
+  };
 };
 
-export default connect(mapStateToProps, {
-        follow,
-        unfollow,
-        setUsers,
-        setCurrentPage,
-        setTotalUsersCount,
-        setIsFetching,
-    }
+export default compose(
+  // WithAuthRedirect,
+  connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setCurrentPage,
+    requestUsers
+  })
 )(UsersContainer);

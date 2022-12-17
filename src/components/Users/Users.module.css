@@ -31,7 +31,20 @@
 }
 
 .user .informBlock button {
+    cursor: pointer;
     width: 5rem;
+    height: 1.7rem;
+    border-radius: 0.5rem;
+}
+
+.informBlock .follow {
+    background-color: #afcbf0;
+    border: none;
+}
+
+.informBlock .unfollow {
+    background-color: #f0c9c5;
+    border: none;
 }
 
 .pagesCounterBlock {
@@ -44,8 +57,7 @@
 }
 
 .selectedPage {
-    /*color: #D197F0;*/
-    border: 1px solid #D197F0;
+    border: 1px solid #d197f0;
     border-radius: 50%;
     height: 20px;
     width: 20px;
@@ -61,6 +73,12 @@
 .total p {
     margin-left: 0.3rem;
     padding: 0.1rem 0.2rem;
-    border: 1px solid #D197F0;
+    border: 1px solid #d197f0;
     border-radius: 0.3rem;
+}
+
+.paginator {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
