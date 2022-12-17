@@ -7,36 +7,32 @@ import { Input } from "../utils/validators";
 
 const LoginForm = ({ handleSubmit, error, captchaURL }) => {
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={!error ? styles.form : styles.commonErrors}
-    >
-      <Field
-        component={Input}
-        type={"text"}
-        placeholder={"email"}
-        name={"email"}
+    <form onSubmit={handleSubmit}
+          className={!error ? styles.form : styles.commonErrors}>
+
+      <Field component={Input}
+             type={"text"}
+             placeholder={"email"}
+             name={"email"}
       />
 
-      <Field
-        component={Input}
-        type={"password"}
-        placeholder={"password"}
-        name={"password"}
+      <Field component={Input}
+             type={"password"}
+             placeholder={"password"}
+             name={"password"}
       />
 
       <Field component={"input"}
              type={"checkbox"}
-             name={"rememberMe"} />
+             name={"rememberMe"}
+      />
 
       {captchaURL ? <img src={captchaURL} alt="captcha" /> : ""}
-      {captchaURL ? <Field
-        component={Input}
-        type={"text"}
-        placeholder={"symbol from image"}
-        name={"captcha"}
+      {captchaURL ? <Field component={Input}
+                           type={"text"}
+                           placeholder={"symbol from image"}
+                           name={"captcha"}
       /> : ""}
-
 
       <div>{error}</div>
       <button>submit</button>
@@ -50,7 +46,6 @@ const LoginReduxForm = reduxForm({
 
 const Login = ({ login, isAuth, captchaURL }) => {
   const onSubmit = (formData) => {
-    // console.log(formData);
     login(formData.email, formData.password, formData.rememberMe, formData.captcha);
   };
 

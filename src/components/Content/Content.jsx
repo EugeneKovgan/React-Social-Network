@@ -1,7 +1,7 @@
 import styles from "./Content.module.css";
 import React, { Suspense } from "react";
 import Login from "../Login/Login";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import DialogsContainer from "../Dialogs/DialogsContainer";
 import UsersContainer from "../Users/UsersContainer";
 import ProfileContainer, { withRouter } from "../Profile/ProfileContainer";
@@ -16,8 +16,17 @@ const Music = React.lazy(() => import ("../Music/Music"));
 const Settings = React.lazy(() => import ("../Settings/Settings"));
 
 class Content extends Component {
+  catchAllUnhandledErrors = (promiseRejectionEvent) => {
+    alert(promiseRejectionEvent);
+  };
+
   componentDidMount() {
     this.props.InitializeApp();
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
   }
 
   render() {
@@ -34,6 +43,7 @@ class Content extends Component {
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
+            <Route exact path="/" element={<Navigate to={"/profile"} />} />
           </Routes>
         </Suspense>
       </div>
