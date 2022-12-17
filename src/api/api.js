@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getCaptchaURL } from "../components/redux/auth-reducer";
 
 const instance = axios.create({
   withCredentials: true,
@@ -70,9 +71,9 @@ export const authAPI = {
     });
   },
 
-  login(email, password, rememberMe = false) {
+  login(email, password, rememberMe = false, captcha = null) {
     return instance
-      .post("auth/login", { email, password, rememberMe })
+      .post("auth/login", { email, password, rememberMe, captcha })
       .then((response) => {
         return response.data;
       });
@@ -82,5 +83,11 @@ export const authAPI = {
     return instance.delete("auth/login").then((response) => {
       return response.data;
     });
+  }
+};
+
+export const securityAPI = {
+  getCaptchaURL() {
+    return instance.get(`security/get-captcha-url`);
   }
 };
