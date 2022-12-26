@@ -1,19 +1,17 @@
-import axios from "axios";
-import { getCaptchaURL } from "../components/redux/auth-reducer";
+import axios from 'axios';
+import { getCaptchaURL } from '../components/redux/auth-reducer';
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: "https://social-network.samuraijs.com/api/1.0/",
-  headers: { "api-key": "0b874356-c466-4f4a-a5c1-851157f6c2a3" }
+  baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+  headers: { 'api-key': '0b874356-c466-4f4a-a5c1-851157f6c2a3' },
 });
 
 export const userAPI = {
   getUsers(currentPage, pageSize) {
-    return instance
-      .get(`users?page=${currentPage}&count=${pageSize}`, {})
-      .then((response) => {
-        return response.data;
-      });
+    return instance.get(`users?page=${currentPage}&count=${pageSize}`, {}).then((response) => {
+      return response.data;
+    });
   },
 
   unfollow(userId) {
@@ -25,9 +23,9 @@ export const userAPI = {
   },
 
   getProfileInfo(userId) {
-    console.warn("use profileAPI ");
+    console.warn('use profileAPI ');
     profileAPI.getProfileInfo(userId);
-  }
+  },
 };
 
 export const profileAPI = {
@@ -44,24 +42,22 @@ export const profileAPI = {
   },
 
   updateStatus(status) {
-    return instance
-      .put(`profile/status`, { status: status })
-      .then((response) => {
-        return response.data;
-      });
+    return instance.put(`profile/status`, { status: status }).then((response) => {
+      return response.data;
+    });
   },
   savePhoto(photoFile) {
     const formData = new FormData();
-    formData.append("image", photoFile);
-    return instance.put("profile/photo", formData, {
+    formData.append('image', photoFile);
+    return instance.put('profile/photo', formData, {
       headers: {
-        "Content-Type": "multipart/form-data"
-      }
+        'Content-Type': 'multipart/form-data',
+      },
     });
   },
   saveProfile(profile) {
-    return instance.put("profile", profile);
-  }
+    return instance.put('profile', profile);
+  },
 };
 
 export const authAPI = {
@@ -72,22 +68,20 @@ export const authAPI = {
   },
 
   login(email, password, rememberMe = false, captcha = null) {
-    return instance
-      .post("auth/login", { email, password, rememberMe, captcha })
-      .then((response) => {
-        return response.data;
-      });
+    return instance.post('auth/login', { email, password, rememberMe, captcha }).then((response) => {
+      return response.data;
+    });
   },
 
   logout() {
-    return instance.delete("auth/login").then((response) => {
+    return instance.delete('auth/login').then((response) => {
       return response.data;
     });
-  }
+  },
 };
 
 export const securityAPI = {
   getCaptchaURL() {
     return instance.get(`security/get-captcha-url`);
-  }
+  },
 };

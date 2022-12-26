@@ -1,19 +1,19 @@
-import styles from "./Content.module.css";
-import React, { Suspense } from "react";
-import Login from "../Login/Login";
-import { Navigate, Route, Routes } from "react-router-dom";
-import DialogsContainer from "../Dialogs/DialogsContainer";
-import UsersContainer from "../Users/UsersContainer";
-import ProfileContainer, { withRouter } from "../Profile/ProfileContainer";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import { Component } from "react";
-import { InitializeApp } from "../redux/app-reducer";
-import Preloader from "../Preloader/Preloader";
+import styles from './Content.module.css';
+import React, { Suspense } from 'react';
+import Login from '../Login/Login';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import DialogsContainer from '../Dialogs/DialogsContainer';
+import UsersContainer from '../Users/UsersContainer';
+import ProfileContainer, { withRouter } from '../Profile/ProfileContainer';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { Component } from 'react';
+import { InitializeApp } from '../redux/app-reducer';
+import Preloader from '../Preloader/Preloader';
 
-const News = React.lazy(() => import ("../News/News"));
-const Music = React.lazy(() => import ("../Music/Music"));
-const Settings = React.lazy(() => import ("../Settings/Settings"));
+const News = React.lazy(() => import('../News/News'));
+const Music = React.lazy(() => import('../Music/Music'));
+const Settings = React.lazy(() => import('../Settings/Settings'));
 
 class Content extends Component {
   catchAllUnhandledErrors = (promiseRejectionEvent) => {
@@ -22,11 +22,11 @@ class Content extends Component {
 
   componentDidMount() {
     this.props.InitializeApp();
-    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+    window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+    window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors);
   }
 
   render() {
@@ -34,16 +34,16 @@ class Content extends Component {
       <div className={styles.content}>
         <Suspense fallback={<Preloader />}>
           <Routes>
-            <Route path="/profile" element={<ProfileContainer />}>
-              <Route path=":userId" element={<ProfileContainer />} />
+            <Route path='/profile' element={<ProfileContainer />}>
+              <Route path=':userId' element={<ProfileContainer />} />
             </Route>
-            <Route path="/dialogs/*" element={<DialogsContainer />} />
-            <Route path="/login/*" element={<Login />} />
-            <Route path="/users/*" element={<UsersContainer />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/music" element={<Music />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route exact path="/" element={<Navigate to={"/profile"} />} />
+            <Route path='/dialogs/*' element={<DialogsContainer />} />
+            <Route path='/login/*' element={<Login />} />
+            <Route path='/users/*' element={<UsersContainer />} />
+            <Route path='/news' element={<News />} />
+            <Route path='/music' element={<Music />} />
+            <Route path='/settings' element={<Settings />} />
+            <Route exact path='/' element={<Navigate to={'/profile'} />} />
           </Routes>
         </Suspense>
       </div>
@@ -56,10 +56,7 @@ class Content extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  initialize: state.app.initialized
+  initialize: state.app.initialized,
 });
 
-export default compose(
-  withRouter,
-  connect(mapStateToProps, { InitializeApp })
-)(Content);
+export default compose(withRouter, connect(mapStateToProps, { InitializeApp }))(Content);
