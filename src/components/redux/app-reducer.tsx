@@ -1,4 +1,3 @@
-// import { type } from '@testing-library/user-event/dist/type';
 import { getAuthUserData } from './auth-reducer';
 
 const SET_INITIALIZED = 'SET_INITIALIZED';
