@@ -1,7 +1,11 @@
-import styles from "./ProfileInfo.module.css";
-import { Component, createRef } from "react";
+// @ts-ignore
+import styles from './ProfileInfo.module.css';
+import { ChangeEvent, Component, createRef } from 'react';
 
-class ProfileStatus extends Component {
+type PropsType = { status: string; updateStatus: (newStatus: string) => void };
+type StateType = { editMode: boolean; status: string };
+
+class ProfileStatus extends Component<PropsType, StateType> {
   state = {
     editMode: false,
     status: this.props.status,
@@ -20,26 +24,24 @@ class ProfileStatus extends Component {
     this.props.updateStatus(this.state.status);
   };
 
-  onStatusChange = (e) => {
+  onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
     this.setState({ status: e.currentTarget.value });
   };
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log("ProfileStatus_componentDidUpdate");
+  componentDidUpdate(prevProps: PropsType, prevState: StateType) {
+    console.log('ProfileStatus_componentDidUpdate');
     if (prevProps.status !== this.props.status) {
       this.setState({ status: this.props.status });
     }
   }
 
   render() {
-    console.log("ProfileStatus_render");
+    console.log('ProfileStatus_render');
     return (
       <div className={styles.ProfileInfo}>
         <div className={styles.statusBlock}>
           {!this.state.editMode === true ? (
-            <p onDoubleClick={this.activateEditMode}>
-              {this.props.status || "no status"}
-            </p>
+            <p onDoubleClick={this.activateEditMode}>{this.props.status || 'no status'}</p>
           ) : (
             <input
               onChange={this.onStatusChange}

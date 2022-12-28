@@ -14,7 +14,7 @@ const Paginator: React.FC<PropsType> = ({
   pageSize,
   currentPage,
   onPageChanged,
-  portionSize = 10,
+  portionSize = 10, //??
 }) => {
   const usersCount = totalUsersCount;
   const pagesCount = Math.ceil(totalUsersCount / pageSize);
