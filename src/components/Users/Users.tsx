@@ -15,7 +15,7 @@ type PropsType = {
   unfollow: () => void;
 };
 
-let Users: React.FC<PropsType> = ({
+const Users: React.FC<PropsType> = ({
   totalUsersCount,
   pageSize,
   currentPage,
@@ -32,6 +32,7 @@ let Users: React.FC<PropsType> = ({
         pageSize={pageSize}
         currentPage={currentPage}
         onPageChanged={onPageChanged}
+        // @ts-ignore
         followingInProgress={followingInProgress}
         follow={follow}
         unfollow={unfollow}
