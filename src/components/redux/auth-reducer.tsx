@@ -1,6 +1,6 @@
 import { authAPI, securityAPI } from '../../api/api';
+// @ts-ignore
 import { stopSubmit } from 'redux-form';
-
 const SET_USERS_DATA = 'SET_USERS_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'GET_CAPTCHA_URL_SUCCESS';
 

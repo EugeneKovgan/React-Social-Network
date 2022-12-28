@@ -1,5 +1,7 @@
+// @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 import { profileAPI } from '../../api/api';
+// @ts-ignore
 import { stopSubmit } from 'redux-form';
 import { PostType } from '../../types/types';
 import { ProfileType } from '../../types/types';

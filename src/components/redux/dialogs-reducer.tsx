@@ -1,5 +1,5 @@
+// @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
-
 const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE';
 
 type DialogType = { id: string | number; name: string };

@@ -1,18 +1,12 @@
-import styles from "./Users.module.css";
-import avatar from "../../assets/img/avatar.jpg";
-import { NavLink } from "react-router-dom";
+import styles from './Users.module.css';
+import avatar from '../../assets/img/avatar.jpg';
+import { NavLink } from 'react-router-dom';
 
-const User = ({
-                followingInProgress,
-                follow,
-                unfollow,
-                item
-              }) => {
-
+const User = ({ followingInProgress, follow, unfollow, item }) => {
   return (
     <div className={styles.user}>
       <NavLink to={`/profile/${item.id}`}>
-        <img className={styles.avatar} src={item.photos.small ? item.photos.small : avatar} alt="avatar" />
+        <img className={styles.avatar} src={item.photos.small ? item.photos.small : avatar} alt='avatar' />
       </NavLink>
       <div className={styles.informBlock}>
         <span>{item.name}</span>
