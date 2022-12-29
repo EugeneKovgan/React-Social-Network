@@ -1,10 +1,9 @@
-import styles from "./Dialogs.module.css";
-import DialogItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
-import React from "react";
-import { Navigate } from "react-router-dom";
-import { Field, reduxForm } from "redux-form";
-import { requiredField, Textarea } from "../utils/validators";
+import styles from './Dialogs.module.css';
+import DialogItem from './DialogItem/DialogItem';
+import Message from './Message/Message';
+import { Navigate } from 'react-router-dom';
+import { Field, reduxForm } from 'redux-form';
+import { requiredField, Textarea } from '../utils/validators';
 
 const Dialogs = ({ dialogsPage, SendMessage, isAuth }) => {
   let state = dialogsPage;
@@ -13,7 +12,7 @@ const Dialogs = ({ dialogsPage, SendMessage, isAuth }) => {
     SendMessage(value.newMessageBody);
   };
 
-  if (!isAuth) return <Navigate to={"/login"} />;
+  if (!isAuth) return <Navigate to={'/login'} />;
 
   return (
     <div className={styles.dialogs}>
@@ -35,20 +34,14 @@ const Dialogs = ({ dialogsPage, SendMessage, isAuth }) => {
 const AddMessageForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit} className={styles.newPostBlock}>
-      <Field
-        component={"textarea"}
-        component={Textarea}
-        name={"newMessageBody"}
-        placeholder={"new message"}
-        validate={requiredField}
-      />
+      <Field component={Textarea} name={'newMessageBody'} placeholder={'new message'} validate={requiredField} />
       <button>App post</button>
     </form>
   );
 };
 
 const AddMessageReduxForm = reduxForm({
-  form: "newMessage",
+  form: 'newMessage',
 })(AddMessageForm);
 
 export default Dialogs;

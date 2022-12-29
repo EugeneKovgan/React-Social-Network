@@ -4,7 +4,8 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "es6",
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -22,5 +23,35 @@
   },
   "include": [
     "src"
+  ],
+    "exclude": [
+    "node_modules",
+    "build"
   ]
 }
+
+
+// {
+//   "compilerOptions": {
+//     "jsx": "react",
+//     "lib": ["es6", "dom"],
+//     "rootDir": "src",
+//     "module": "commonjs",
+//     "target": "es5",
+//     "sourceMap": true,
+//     "moduleResolution": "node",
+//     "noImplicitReturns": true,
+//     "noImplicitThis": true,
+//     "noImplicitAny": true,
+//     "strictNullChecks": true,
+//     "esModuleInterop": true,
+//     "allowSyntheticDefaultImports": true,
+//   },
+//   "include": [
+//     "./src"
+//   ],
+//   "exclude": [
+//     "node_modules",
+//     "build"
+//   ]
+// }
