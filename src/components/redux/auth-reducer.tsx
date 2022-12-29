@@ -1,4 +1,4 @@
-import { authAPI, securityAPI } from '../../api/api';
+import { authAPI, ResultCodeEnum, ResultCodeEnumWithCaptcha, securityAPI } from '../../api/api';
 // @ts-ignore
 import { stopSubmit } from 'redux-form';
 const SET_USERS_DATA = 'SET_USERS_DATA';
@@ -59,7 +59,7 @@ const getCaptchaURLSuccess = (captchaURL: string): GetCaptchaURLSuccessType => (
 
 export const getAuthUserData = () => async (dispatch: any) => {
   const response = await authAPI.getAuthMe();
-  if (!response.resultCode) {
+  if (response.resultCode === ResultCodeEnum.Success) {
     const { id, login, email } = response.data;
     dispatch(setAuthUserData(id, email, login, true));
   }
@@ -68,10 +68,10 @@ export const getAuthUserData = () => async (dispatch: any) => {
 export const login =
   (email: string, password: string, rememberMe: boolean, captcha: string | any) => async (dispatch: any) => {
     const response = await authAPI.login(email, password, rememberMe, captcha);
-    if (!response.resultCode) {
+    if (response.resultCode === ResultCodeEnum.Success) {
       dispatch(getAuthUserData());
     } else {
-      if (response.resultCode === 10) {
+      if (response.resultCode === ResultCodeEnumWithCaptcha.CaptchaIsRequired) {
         dispatch(getCaptchaURL());
       }
       let errorMessage = response.messages.length > 0 ? response.messages[0] : 'Some error';
@@ -88,7 +88,7 @@ export const getCaptchaURL = () => async (dispatch: any) => {
 
 export const logout = () => async (dispatch: any) => {
   const response = await authAPI.logout();
-  if (!response.resultCode) {
+  if (response.resultCode === ResultCodeEnum.Success) {
     dispatch(setAuthUserData(null, null, null, false));
   }
 };
