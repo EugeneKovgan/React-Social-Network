@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { setCurrentPage, requestUsers, follow, unfollow } from '../redux/users-reducer';
+import { actions, requestUsers, follow, unfollow } from '../redux/users-reducer';
 import Preloader from '../Preloader/Preloader';
 import Users from './Users';
 import { compose } from 'redux';
@@ -82,7 +82,7 @@ export default compose<React.Component<PropsType>>(
   connect(mapStateToProps, {
     follow,
     unfollow,
-    setCurrentPage,
+    // setCurrentPage,
     requestUsers,
   })
 )(UsersContainer);
