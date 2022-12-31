@@ -1,33 +1,33 @@
 import { getAuthUserData } from './auth-reducer';
-const SET_INITIALIZED = 'SET_INITIALIZED';
+import { InferActionsTypes } from './redux-store';
 
-export type InitialStateType = {
-  initialized: boolean;
-};
-
-const initialState: InitialStateType = {
+const initialState = {
   initialized: false,
 };
 
-const appReducer = (state: InitialStateType = initialState, action: any): InitialStateType => {
+export type InitialStateType = typeof initialState;
+type ActionsType = InferActionsTypes<typeof actions>;
+
+const appReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
   switch (action.type) {
-    case SET_INITIALIZED:
+    case 'APP/SET_INITIALIZED':
       return { ...state, initialized: true };
     default:
       return state;
   }
 };
-type SetInitializedActionType = {
-  type: typeof SET_INITIALIZED;
+
+const actions = {
+  setInitialized: () =>
+    ({
+      type: 'APP/SET_INITIALIZED',
+    } as const),
 };
-export const setInitialized = (): SetInitializedActionType => ({
-  type: SET_INITIALIZED,
-});
 
 export const InitializeApp = () => (dispatch: any) => {
   const res = dispatch(getAuthUserData());
   res.then(() => {
-    dispatch(setInitialized());
+    dispatch(actions.setInitialized());
   });
 };
 

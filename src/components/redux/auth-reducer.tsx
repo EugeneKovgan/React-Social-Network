@@ -3,72 +3,57 @@ import { securityAPI } from '../../api/security-api';
 import { authAPI } from '../../api/auth-api';
 // @ts-ignore
 import { stopSubmit } from 'redux-form';
-const SET_USERS_DATA = 'SET_USERS_DATA';
-const GET_CAPTCHA_URL_SUCCESS = 'GET_CAPTCHA_URL_SUCCESS';
+import { BaseThunkType, InferActionsTypes } from './redux-store';
+import { Action } from 'redux';
 
-type InitialStateType = {
-  id: number | null;
-  email: string | null;
-  login: string | null;
-  isAuth: boolean;
-  captchaURL: string | null;
-};
-let initialState: InitialStateType = {
-  id: null,
-  email: null,
-  login: null,
+let initialState = {
+  id: null as number | null,
+  email: null as string | null,
+  login: null as string | null,
   isAuth: false,
-  captchaURL: null,
+  captchaURL: null as string | null,
 };
+export type InitialStateType = typeof initialState;
 
-const authReducer = (state = initialState, action: any): InitialStateType => {
+type ActionsType = InferActionsTypes<typeof actions>;
+type ThunkType = BaseThunkType<ActionsType | ReturnType<typeof stopSubmit>>;
+// ReturnType<typeof stopSubmit> == ActionsType
+
+const authReducer = (state = initialState, action: ReturnType<typeof stopSubmit>): InitialStateType => {
+  // ReturnType<typeof stopSubmit> == ActionsType
   switch (action.type) {
-    case SET_USERS_DATA:
-    case GET_CAPTCHA_URL_SUCCESS:
+    case 'SET_USERS_DATA':
+    case 'GET_CAPTCHA_URL_SUCCESS':
       return { ...state, ...action.payload };
     default:
       return state;
   }
 };
 
-type SetAuthUserDataActionPayloadType = {
-  id: number | null;
-  email: string | null;
-  login: string | null;
-  isAuth: boolean;
-};
-type SetAuthUserDataActionType = { type: typeof SET_USERS_DATA; payload: SetAuthUserDataActionPayloadType };
-
-const setAuthUserData = (
-  id: number | null,
-  email: string | null,
-  login: string | null,
-  isAuth: boolean
-): SetAuthUserDataActionType => ({
-  type: SET_USERS_DATA,
-  payload: { id, email, login, isAuth },
-});
-
-type GetCaptchaURLSuccessType = {
-  type: typeof GET_CAPTCHA_URL_SUCCESS;
-  payload: { captchaURL: string };
+const actions = {
+  setAuthUserData: (id: number | null, email: string | null, login: string | null, isAuth: boolean) =>
+    ({
+      type: 'SET_USERS_DATA',
+      payload: { id, email, login, isAuth },
+    } as const),
+  getCaptchaURLSuccess: (captchaURL: string) =>
+    ({
+      type: 'GET_CAPTCHA_URL_SUCCESS',
+      payload: { captchaURL },
+    } as const),
 };
 
-const getCaptchaURLSuccess = (captchaURL: string): GetCaptchaURLSuccessType => ({
-  type: GET_CAPTCHA_URL_SUCCESS,
-  payload: { captchaURL },
-});
-
-export const getAuthUserData = () => async (dispatch: any) => {
+export const getAuthUserData = (): ThunkType => async (dispatch) => {
   const response = await authAPI.getAuthMe();
   if (response.resultCode === ResultCodeEnum.Success) {
     const { id, login, email } = response.data;
-    dispatch(setAuthUserData(id, email, login, true));
+    dispatch(actions.setAuthUserData(id, email, login, true));
   }
 };
 
 export const login =
-  (email: string, password: string, rememberMe: boolean, captcha: string | any) => async (dispatch: any) => {
+  (email: string, password: string, rememberMe: boolean, captcha: string): ThunkType =>
+  async (dispatch) => {
     const response = await authAPI.login(email, password, rememberMe, captcha);
     if (response.resultCode === ResultCodeEnum.Success) {
       dispatch(getAuthUserData());
@@ -81,17 +66,16 @@ export const login =
     }
   };
 
-export const getCaptchaURL = () => async (dispatch: any) => {
+export const getCaptchaURL = (): ThunkType => async (dispatch) => {
   const response = await securityAPI.getCaptchaURL();
   const captchaURL = response.url;
-  console.log(captchaURL);
-  dispatch(getCaptchaURLSuccess(captchaURL));
+  dispatch(actions.getCaptchaURLSuccess(captchaURL));
 };
 
-export const logout = () => async (dispatch: any) => {
+export const logout = (): ThunkType => async (dispatch) => {
   const response = await authAPI.logout();
   if (response.resultCode === ResultCodeEnum.Success) {
-    dispatch(setAuthUserData(null, null, null, false));
+    dispatch(actions.setAuthUserData(null, null, null, false));
   }
 };
 
