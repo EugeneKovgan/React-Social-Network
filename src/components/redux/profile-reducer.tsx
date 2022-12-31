@@ -1,6 +1,6 @@
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
-import { profileAPI } from '../../api/api';
+import { profileAPI } from '../../api/profile-api';
 // @ts-ignore
 import { stopSubmit } from 'redux-form';
 import { PostType } from '../../types/types';
@@ -98,7 +98,7 @@ export const getStatus = (userId: number) => async (dispatch: any) => {
 
 export const updateStatus = (status: string) => async (dispatch: any) => {
   let response = await profileAPI.updateStatus(status);
-  if (!response.data.resultCode) {
+  if (!response.resultCode) {
     dispatch(setStatus(status));
   }
 };

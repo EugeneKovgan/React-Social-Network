@@ -1,4 +1,6 @@
-import { authAPI, ResultCodeEnum, ResultCodeEnumWithCaptcha, securityAPI } from '../../api/api';
+import { ResultCodeEnum, ResultCodeEnumWithCaptcha } from '../../api/api';
+import { securityAPI } from '../../api/security-api';
+import { authAPI } from '../../api/auth-api';
 // @ts-ignore
 import { stopSubmit } from 'redux-form';
 const SET_USERS_DATA = 'SET_USERS_DATA';
@@ -81,7 +83,7 @@ export const login =
 
 export const getCaptchaURL = () => async (dispatch: any) => {
   const response = await securityAPI.getCaptchaURL();
-  const captchaURL = response.data.url;
+  const captchaURL = response.url;
   console.log(captchaURL);
   dispatch(getCaptchaURLSuccess(captchaURL));
 };
