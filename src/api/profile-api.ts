@@ -19,7 +19,7 @@ export const profileAPI = {
       return response.data;
     });
   },
-  savePhoto(photoFile: any) {
+  savePhoto(photoFile: File) {
     const formData = new FormData();
     formData.append('image', photoFile);
     return instance.put<ResponseType<PhotosType>>('profile/photo', formData, {
