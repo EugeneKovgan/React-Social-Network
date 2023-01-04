@@ -1,4 +1,5 @@
-import styles from "./Music.module.css";
+// @ts-ignore
+import styles from './Music.module.css';
 
 const Music = () => {
   return <div className={styles.music}>Music</div>;

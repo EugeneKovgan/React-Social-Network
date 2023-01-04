@@ -1,4 +1,5 @@
-import styles from "./Settings.module.css";
+// @ts-ignore
+import styles from './Settings.module.css';
 
 const Settings = () => {
   return <div className={styles.settings}>Settings</div>;

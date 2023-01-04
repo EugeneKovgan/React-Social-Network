@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 
 let mapStateToPropsForRedirect = (state) => ({

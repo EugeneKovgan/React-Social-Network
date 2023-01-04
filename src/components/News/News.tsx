@@ -1,4 +1,5 @@
-import styles from "./News.module.css";
+// @ts-ignore
+import styles from './News.module.css';
 
 const News = () => {
   return <div className={styles.news}>News</div>;
