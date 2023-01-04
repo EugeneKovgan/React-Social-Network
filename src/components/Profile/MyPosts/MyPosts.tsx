@@ -8,9 +8,11 @@ import { requiredField, Textarea } from '../../utils/validators';
 import { PostType } from '../../../types/types';
 
 type PostReduxFormType = { newPost: string };
-type PropsType = { posts: Array<PostType>; addPost: (newPostText: string) => void };
 
-const MyPosts: React.FC<PropsType> = React.memo((props) => {
+export type MapPropsType = { posts: Array<PostType> };
+export type DispatchPropsType = { addPost: (newPostText: string) => void };
+
+const MyPosts: React.FC<MapPropsType & DispatchPropsType> = React.memo((props) => {
   let { addPost, posts } = props;
   const onAddPost = (message: PostReduxFormType) => {
     addPost(message.newPost);
@@ -28,7 +30,7 @@ const MyPosts: React.FC<PropsType> = React.memo((props) => {
   );
 });
 
-const ReduxForm: React.FC<InjectedFormProps<PostReduxFormType & PropsType> & PropsType> = (props) => {
+const ReduxForm: React.FC<InjectedFormProps<PostReduxFormType & MapPropsType> & MapPropsType> = (props) => {
   return (
     <form onSubmit={props.handleSubmit} className={styles.newPostBlock}>
       <Field

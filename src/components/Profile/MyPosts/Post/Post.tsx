@@ -1,7 +1,16 @@
+// @ts-ignore
 import styles from './Post.module.css';
+// @ts-ignore
 import photo from '../../../../assets/img/avatar.jpg';
+import React from 'react';
 
-const Post = (props) => {
+type PropsType = {
+  name: string;
+  message: string;
+  likes: number;
+};
+
+const Post: React.FC<PropsType> = (props) => {
   return (
     <div className={styles.post}>
       <div className={styles.info_block}>
@@ -12,7 +21,6 @@ const Post = (props) => {
       <div className={styles.textBlock}>
         <div className={styles.header_block}>
           <p>{props.message}</p>
-          <p>Phone: {props.phone}</p>
         </div>
         <div className={styles.footer_block}>
           <p>Likes:{props.likes} </p>

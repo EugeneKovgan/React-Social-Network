@@ -4,32 +4,30 @@ import { useEffect, useState } from 'react';
 import { ChangeEvent } from 'react';
 import { ProfileType } from '../../../types/types';
 
-type ProfileStatusHooksType = {
+type PropsType = {
   updateStatus: (status: string) => void;
-  statusInput: string;
+  status: string;
   isOwner: boolean;
-  // profile: ProfileType;
-  // activateEditMode: string;
-  // isOwner: boolean;
 };
 
-const ProfileStatusHooks: React.FC<ProfileStatusHooksType> = ({ statusInput, isOwner, updateStatus }) => {
+// const ProfileStatusHooks: React.FC<PropsType> = ({ status, isOwner, updateStatus }) => {
+const ProfileStatusHooks: React.FC<PropsType> = (props) => {
   let [editMode, setEditMode] = useState(false);
-  let [status, setStatus] = useState(statusInput);
+  let [status, setStatus] = useState(props.status);
 
   useEffect(() => {
-    setStatus(status);
-  }, [status]);
+    setStatus(props.status);
+  }, [props.status]);
 
   const activateEditMode = () => {
-    if (isOwner) {
+    if (props.isOwner) {
       setEditMode(true);
     }
   };
 
   const deActivateEditMode = () => {
     setEditMode(false);
-    updateStatus(status);
+    props.updateStatus(status);
   };
 
   const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {

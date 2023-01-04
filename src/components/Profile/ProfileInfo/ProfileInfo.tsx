@@ -12,7 +12,7 @@ import { ProfileType } from '../../../types/types';
 
 type ProfileInfoType = {
   updateStatus: (status: string) => void;
-  profile: ProfileType;
+  profile: ProfileType | null;
   status: string;
   isOwner: boolean;
   savePhoto: (file: File) => void;
@@ -42,7 +42,7 @@ const ProfileInfo: React.FC<ProfileInfoType> = ({ updateStatus, profile, status,
   if (!profile) return <Preloader />;
   return (
     <div className={styles.ProfileInfo}>
-      <ProfileStatusHooks updateStatus={updateStatus} isOwner={isOwner} statusInput={status} />
+      <ProfileStatusHooks updateStatus={updateStatus} isOwner={isOwner} status={status} />
       <img src={profile.photos.small || photo} alt='photo' />
       {isOwner ? <input className={styles.files_btn} onChange={onMainPhotoSelected} type='file' /> : ''}
       {editMode ? (
