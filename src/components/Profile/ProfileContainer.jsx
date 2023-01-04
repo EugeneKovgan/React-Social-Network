@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import Profile from "./Profile";
-import { getStatus, getUserProfile, savePhoto, saveProfile, updateStatus } from "../redux/profile-reducer";
-import { useParams } from "react-router-dom";
-import { connect } from "react-redux";
-import { WithAuthRedirect } from "../../hoc/WithAuthRedirect";
-import { compose } from "redux";
+import React, { Component } from 'react';
+import Profile from './Profile';
+import { getStatus, getUserProfile, savePhoto, saveProfile, updateStatus } from '../redux/profile-reducer';
+import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { WithAuthRedirect } from '../../hoc/WithAuthRedirect';
+import { compose } from 'redux';
 
 export function withRouter(Children) {
   return (props) => {
@@ -28,7 +28,7 @@ class ProfileContainer extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.match.params.userId != prevProps.match.params.userId) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
       this.refreshProfile();
     }
   }
@@ -51,7 +51,7 @@ const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
   isAuth: state.auth.isAuth,
-  authorizedUserId: state.auth.id
+  authorizedUserId: state.auth.id,
 });
 
 export default compose(

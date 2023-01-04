@@ -1,12 +1,18 @@
 import React from 'react';
+// @ts-ignore
 import styles from './MyPosts.module.css';
 import Post from './Post/Post';
-import { Field, reduxForm } from 'redux-form';
+// @ts-ignore
+import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { requiredField, Textarea } from '../../utils/validators';
+import { PostType } from '../../../types/types';
 
-const MyPosts = React.memo((props) => {
+type PostReduxFormType = { newPost: string };
+type PropsType = { posts: Array<PostType>; addPost: (newPostText: string) => void };
+
+const MyPosts: React.FC<PropsType> = React.memo((props) => {
   let { addPost, posts } = props;
-  const onAddPost = (message) => {
+  const onAddPost = (message: PostReduxFormType) => {
     addPost(message.newPost);
   };
 
@@ -15,14 +21,14 @@ const MyPosts = React.memo((props) => {
       <PostReduxForm onSubmit={onAddPost} />
       <div className={styles.postList}>
         {[...posts].reverse().map((item) => {
-          return <Post key={item.id} message={item.message} name={item.name} likes={item.likesCount} />;
+          return <Post key={item.id} message={item.message} name={item.id} likes={item.likesCount} />; //need add name
         })}
       </div>
     </div>
   );
 });
 
-const ReduxForm = (props) => {
+const ReduxForm: React.FC<InjectedFormProps<PostReduxFormType & PropsType> & PropsType> = (props) => {
   return (
     <form onSubmit={props.handleSubmit} className={styles.newPostBlock}>
       <Field
@@ -38,7 +44,7 @@ const ReduxForm = (props) => {
   );
 };
 
-const PostReduxForm = reduxForm({
+const PostReduxForm = reduxForm<PostReduxFormType>({
   form: 'newPost',
 })(ReduxForm);
 

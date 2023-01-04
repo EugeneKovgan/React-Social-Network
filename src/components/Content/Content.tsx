@@ -1,3 +1,4 @@
+// @ts-ignore
 import styles from './Content.module.css';
 import React, { Suspense } from 'react';
 import Login from '../Login/Login';
@@ -10,14 +11,18 @@ import { connect } from 'react-redux';
 import { Component } from 'react';
 import { InitializeApp } from '../redux/app-reducer';
 import Preloader from '../Preloader/Preloader';
+import { AppStateType } from '../redux/redux-store';
 
 const News = React.lazy(() => import('../News/News'));
 const Music = React.lazy(() => import('../Music/Music'));
 const Settings = React.lazy(() => import('../Settings/Settings'));
 
-class Content extends Component {
-  catchAllUnhandledErrors = (promiseRejectionEvent) => {
-    alert(promiseRejectionEvent);
+type MapPropsType = ReturnType<typeof mapStateToProps>;
+type DispatchPropsType = { InitializeApp: () => void };
+
+class Content extends Component<MapPropsType & DispatchPropsType> {
+  catchAllUnhandledErrors = (e: PromiseRejectionEvent) => {
+    alert(PromiseRejectionEvent);
   };
 
   componentDidMount() {
@@ -43,7 +48,7 @@ class Content extends Component {
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />
-            <Route exact path='/' element={<Navigate to={'/profile'} />} />
+            <Route path='/' element={<Navigate to={'/profile'} />} />
           </Routes>
         </Suspense>
       </div>
@@ -55,7 +60,7 @@ class Content extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
   initialize: state.app.initialized,
 });
 
