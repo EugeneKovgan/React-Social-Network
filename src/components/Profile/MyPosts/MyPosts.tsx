@@ -3,9 +3,15 @@ import React from 'react';
 import styles from './MyPosts.module.css';
 import Post from './Post/Post';
 // @ts-ignore
-import { Field, reduxForm, InjectedFormProps } from 'redux-form';
+import { Form, Field, InjectedFormProps } from 'react-final-form';
 import { requiredField, Textarea } from '../../utils/validators';
 import { PostType } from '../../../types/types';
+
+const reactFinalForm =
+  ({ form, ...config }: any) =>
+  (component: any) =>
+  (props: any) =>
+    <Form {...config} {...props} component={component} />;
 
 type PostReduxFormType = { newPost: string };
 
@@ -46,7 +52,7 @@ const ReduxForm: React.FC<InjectedFormProps<PostReduxFormType & MapPropsType> & 
   );
 };
 
-const PostReduxForm = reduxForm<PostReduxFormType>({
+const PostReduxForm = reactFinalForm({
   form: 'newPost',
 })(ReduxForm);
 

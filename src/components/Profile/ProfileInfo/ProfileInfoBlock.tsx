@@ -1,7 +1,5 @@
-// @ts-ignore
 import styles from './ProfileInfo.module.css';
 import { ContactType, ProfileType } from '../../../types/types';
-// import React from 'react';
 
 type ProfileInfoBlockType = {
   profile: ProfileType;

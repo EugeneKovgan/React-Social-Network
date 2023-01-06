@@ -1,6 +1,4 @@
-// @ts-ignore
 import styles from './Users.module.css';
-// @ts-ignore
 import avatar from '../../assets/img/avatar.jpg';
 import { NavLink } from 'react-router-dom';
 import { UserType } from '../../types/types';

@@ -1,13 +1,18 @@
-// @ts-ignore
 import styles from './Login.module.css';
 // @ts-ignore
-import { Field, reduxForm, InjectedFormProps } from 'redux-form';
+import { Form, Field, InjectedFormProps } from 'react-final-form';
 import { connect } from 'react-redux';
 import { login } from '../redux/auth-reducer';
 import { NavLink } from 'react-router-dom';
 import { Input } from '../utils/validators';
 import { AppStateType } from '../redux/redux-store';
 import React from 'react';
+
+const reactFinalForm =
+  ({ form, ...config }: any) =>
+  (component: any) =>
+  (props: any) =>
+    <Form {...config} {...props} component={component} />;
 
 type LoginFormOwnProps = { captchaURL: string | null };
 
@@ -30,7 +35,7 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType & LoginFormOwnPr
   );
 };
 
-const LoginReduxForm = reduxForm<LoginFormValuesType, LoginFormOwnProps>({
+const LoginReduxForm = reactFinalForm({
   form: 'login',
 })(LoginForm);
 

@@ -1,4 +1,3 @@
-// @ts-ignore
 import styles from './Settings.module.css';
 
 const Settings = () => {

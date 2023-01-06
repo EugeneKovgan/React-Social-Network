@@ -1,8 +1,5 @@
-// @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 import { profileAPI } from '../../api/profile-api';
-// @ts-ignore
-import { stopSubmit } from 'redux-form';
 import { PostType } from '../../types/types';
 import { ProfileType } from '../../types/types';
 import { PhotosType } from '../../types/types';
@@ -32,7 +29,7 @@ let initialState = {
 
 export type InitialStateType = typeof initialState;
 type ActionsType = InferActionsTypes<typeof actions>;
-type ThunkType = BaseThunkType<ActionsType | ReturnType<typeof stopSubmit>>;
+type ThunkType = BaseThunkType<ActionsType>;
 
 const profileReducer = (state = initialState, action: ActionsType): InitialStateType => {
   switch (action.type) {
@@ -134,8 +131,8 @@ export const saveProfile =
       }
     } else {
       console.log(response.data.messages[0]);
-      dispatch(stopSubmit('edit-profile', { _error: response.data.messages[0] }));
-      return Promise.reject(response.data.messages[0]);
+      // dispatch(stopSubmit('edit-profile', { _error: response.data.messages[0] }));
+      // return Promise.reject(response.data.messages[0]);
     }
   };
 

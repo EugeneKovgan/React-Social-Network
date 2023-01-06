@@ -1,4 +1,3 @@
-// @ts-ignore
 import styles from './Content.module.css';
 import React, { Suspense } from 'react';
 import Login from '../Login/Login';

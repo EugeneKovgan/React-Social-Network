@@ -1,8 +1,5 @@
-// @ts-ignore
 import styles from './Header.module.css';
-// @ts-ignore
 import logo from '../../assets/svg/logo_thyme.svg';
-// @ts-ignore
 import avatar from '../../assets/img/avatar.jpg';
 import { NavLink } from 'react-router-dom';
 

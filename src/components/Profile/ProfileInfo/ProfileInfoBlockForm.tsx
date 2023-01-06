@@ -1,9 +1,14 @@
-// @ts-ignore
 import styles from './ProfileInfo.module.css';
 // @ts-ignore
-import { Field, reduxForm, InjectedFormProps } from 'redux-form';
-import { Input, requiredField } from '../../utils/validators';
+import { Form, Field, InjectedFormProps } from 'react-final-form';
+import { Input } from '../../utils/validators';
 import { ProfileType } from '../../../types/types';
+
+const reactFinalForm =
+  ({ form, ...config }: any) =>
+  (component: any) =>
+  (props: any) =>
+    <Form {...config} {...props} component={component} />;
 
 type PropsType = { profile: ProfileType };
 
@@ -41,7 +46,7 @@ const ProfileInfoBlockForm: React.FC<InjectedFormProps<ProfileType & PropsType> 
   );
 };
 
-const ProfileInfoBlockReduxForm = reduxForm<ProfileType, PropsType>({
+const ProfileInfoBlockReduxForm = reactFinalForm({
   form: 'edit-profile',
 })(ProfileInfoBlockForm);
 

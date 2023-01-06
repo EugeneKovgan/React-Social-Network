@@ -1,5 +1,4 @@
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-// @ts-ignore
 import styles from './Profile.module.css';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import React from 'react';

@@ -1,4 +1,3 @@
-// @ts-ignore
 import styles from './ProfileInfo.module.css';
 import { useEffect, useState } from 'react';
 import { ChangeEvent } from 'react';

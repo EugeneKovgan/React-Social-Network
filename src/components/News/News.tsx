@@ -1,4 +1,3 @@
-// @ts-ignore
 import styles from './News.module.css';
 
 const News = () => {

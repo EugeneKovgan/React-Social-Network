@@ -1,6 +1,4 @@
-// @ts-ignore
 import styles from './Post.module.css';
-// @ts-ignore
 import photo from '../../../../assets/img/avatar.jpg';
 import React from 'react';
 

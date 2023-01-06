@@ -1,6 +1,4 @@
-// @ts-ignore
 import styles from './Footer.module.css';
-// @ts-ignore
 import logo_git from '../../assets/svg/eva_github-outline.svg';
 import React from 'react';
 

@@ -1,10 +1,7 @@
 import { ResultCodeEnum, ResultCodeEnumWithCaptcha } from '../../api/api';
 import { securityAPI } from '../../api/security-api';
 import { authAPI } from '../../api/auth-api';
-// @ts-ignore
-import { stopSubmit } from 'redux-form';
 import { BaseThunkType, InferActionsTypes } from './redux-store';
-import { Action } from 'redux';
 
 let initialState = {
   id: null as number | null,
@@ -16,11 +13,9 @@ let initialState = {
 export type InitialStateType = typeof initialState;
 
 type ActionsType = InferActionsTypes<typeof actions>;
-type ThunkType = BaseThunkType<ActionsType | ReturnType<typeof stopSubmit>>;
-// ReturnType<typeof stopSubmit> == ActionsType
+type ThunkType = BaseThunkType<ActionsType>;
 
-const authReducer = (state = initialState, action: ReturnType<typeof stopSubmit>): InitialStateType => {
-  // ReturnType<typeof stopSubmit> == ActionsType
+const authReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
     case 'SET_USERS_DATA':
     case 'GET_CAPTCHA_URL_SUCCESS':
@@ -61,8 +56,8 @@ export const login =
       if (response.resultCode === ResultCodeEnumWithCaptcha.CaptchaIsRequired) {
         dispatch(getCaptchaURL());
       }
-      let errorMessage = response.messages.length > 0 ? response.messages[0] : 'Some error';
-      dispatch(stopSubmit('login', { _error: errorMessage }));
+      // let errorMessage = response.messages.length > 0 ? response.messages[0] : 'Some error';
+      // dispatch(stopSubmit('login', { _error: errorMessage }));
     }
   };
 

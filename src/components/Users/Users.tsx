@@ -1,4 +1,3 @@
-// @ts-ignore
 import styles from './Users.module.css';
 import Paginator from './Paginator';
 import User from './User';

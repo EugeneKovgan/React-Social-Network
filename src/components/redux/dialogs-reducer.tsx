@@ -1,6 +1,5 @@
-// @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
-import { AppStateType, InferActionsTypes, BaseThunkType } from './redux-store';
+import { InferActionsTypes } from './redux-store';
 
 type DialogType = { id: string | number; name: string };
 type MessageType = { id: string | number; message: string };

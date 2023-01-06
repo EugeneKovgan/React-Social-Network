@@ -1,6 +1,4 @@
-// @ts-ignore
 import styles from './Preloader.module.css';
-// @ts-ignore
 import loader from '../../assets/svg/loader.svg';
 import React from 'react';
 

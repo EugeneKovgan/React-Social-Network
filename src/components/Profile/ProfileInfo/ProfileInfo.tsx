@@ -1,7 +1,5 @@
-// @ts-ignore
 import styles from './ProfileInfo.module.css';
 import { ChangeEvent } from 'react';
-// @ts-ignore
 import photo from '../../../assets/img/avatar.jpg';
 import Preloader from '../../Preloader/Preloader';
 import ProfileStatusHooks from './ProfileStatusHooks';

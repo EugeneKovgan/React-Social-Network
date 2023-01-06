@@ -1,4 +1,3 @@
-// @ts-ignore
 import styles from './Music.module.css';
 
 const Music = () => {
