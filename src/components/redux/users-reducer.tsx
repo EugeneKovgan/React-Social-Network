@@ -10,7 +10,10 @@ let initialState = {
   currentPage: 1,
   isFetching: true,
   followingInProgress: [] as Array<number>, //array of users id's
-  filter: { term: '', friend: null as null | boolean },
+  filter: {
+    term: '',
+    friend: null as null | boolean,
+  },
 };
 
 export type InitialStateType = typeof initialState;
@@ -100,16 +103,16 @@ export const actions = {
     } as const),
 };
 
-type GetStateType = () => AppStateType;
-type DispatchType = Dispatch<ActionsTypes>;
+// type GetStateType = () => AppStateType;
+// type DispatchType = Dispatch<ActionsTypes>;
 type ThunkType = BaseThunkType<ActionsTypes>;
 
-export const requestUsers = (page: number, pageSize: number, filter: FilterType) => {
-  return async (dispatch: DispatchType, getState: GetStateType) => {
+export const requestUsers = (page: number, pageSize: number, filter: FilterType): ThunkType => {
+  return async (dispatch) => {
     dispatch(actions.setIsFetching(true));
     dispatch(actions.setCurrentPage(page));
     dispatch(actions.setFilter(filter));
-    let response = await userAPI.getUsers(page, pageSize);
+    let response = await userAPI.getUsers(page, pageSize, filter.term, filter.friend);
     dispatch(actions.setIsFetching(false));
     dispatch(actions.setUsers(response.items));
     dispatch(actions.setTotalUsersCount(response.totalCount));
@@ -117,7 +120,7 @@ export const requestUsers = (page: number, pageSize: number, filter: FilterType)
 };
 
 export const _followUnfollowFlow = async (
-  dispatch: DispatchType,
+  dispatch: Dispatch<ActionsTypes>,
   userId: number,
   apiMethod: any,
   actionCreator: (userId: number) => ActionsTypes

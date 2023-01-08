@@ -3,6 +3,7 @@ import Paginator from './Paginator';
 import User from './User';
 import { UserType } from '../../types/types';
 import { FilterType } from '../redux/users-reducer';
+import { UsersSearchForm } from './UsersSearchForm';
 
 type PropsType = {
   totalUsersCount: number;
@@ -29,7 +30,7 @@ const Users: React.FC<PropsType> = ({
 }) => {
   return (
     <div className={styles.usersMainBlock}>
-      {/* <UsersSearchForm onFilterChanged={onFilterChanged} /> */}
+      <UsersSearchForm onFilterChanged={onFilterChanged} />
 
       <Paginator
         totalUsersCount={totalUsersCount}
