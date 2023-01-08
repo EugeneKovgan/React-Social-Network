@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import { userAPI } from '../../api/users-api';
 import { UserType } from '../../types/types';
-import { AppStateType, InferActionsTypes, BaseThunkType } from './redux-store';
+import { AppStateType, InferActionsTypes, BaseThunkType, AppDispatch } from './redux-store';
 
 let initialState = {
   users: [] as Array<UserType>,
@@ -136,14 +136,14 @@ export const _followUnfollowFlow = async (
 export const follow = (userId: number): ThunkType => {
   return async (dispatch) => {
     let apiMethod = userAPI.follow.bind(userId);
-    _followUnfollowFlow(dispatch, userId, apiMethod, actions.followSuccess);
+    await _followUnfollowFlow(dispatch, userId, apiMethod, actions.followSuccess);
   };
 };
 
 export const unfollow = (userId: number): ThunkType => {
   return async (dispatch) => {
     let apiMethod = userAPI.unfollow.bind(userId);
-    _followUnfollowFlow(dispatch, userId, apiMethod, actions.unfollowSuccess);
+    await _followUnfollowFlow(dispatch, userId, apiMethod, actions.unfollowSuccess);
   };
 };
 

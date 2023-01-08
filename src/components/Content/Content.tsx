@@ -1,9 +1,9 @@
 import styles from './Content.module.css';
 import React, { Suspense } from 'react';
-import Login from '../Login/Login';
+import { LoginPage } from '../Login/Login';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import DialogsContainer from '../Dialogs/DialogsContainer';
-import UsersContainer from '../Users/UsersContainer';
+import { UsersPage } from '../Users/UsersPage';
 import ProfileContainer, { withRouter } from '../Profile/ProfileContainer';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -42,8 +42,8 @@ class Content extends Component<MapPropsType & DispatchPropsType> {
               <Route path=':userId' element={<ProfileContainer />} />
             </Route>
             <Route path='/dialogs/*' element={<DialogsContainer />} />
-            <Route path='/login/*' element={<Login />} />
-            <Route path='/users/*' element={<UsersContainer />} />
+            <Route path='/login/*' element={<LoginPage />} />
+            <Route path='/users/*' element={<UsersPage />} />
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />
