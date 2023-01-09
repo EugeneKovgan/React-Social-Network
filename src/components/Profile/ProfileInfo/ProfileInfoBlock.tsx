@@ -41,7 +41,6 @@ type ContactsType = {
 const Contacts: React.FC<ContactsType> = ({ contactTitle, contactInfo }) => {
   return (
     <p>
-      {' '}
       {contactTitle}: {contactInfo}
     </p>
   );

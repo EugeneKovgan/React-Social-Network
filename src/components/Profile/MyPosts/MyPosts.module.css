@@ -1,4 +1,7 @@
 .myPosts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .myPosts .newPostBlock {
@@ -6,7 +9,7 @@
   flex-direction: column;
   gap: 0.5rem;
   width: 100%;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
 }
 
 .myPosts .newPostBlock .newPostForm {

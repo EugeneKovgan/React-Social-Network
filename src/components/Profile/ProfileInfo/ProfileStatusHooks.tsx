@@ -1,7 +1,6 @@
 import styles from './ProfileInfo.module.css';
 import { useEffect, useState } from 'react';
 import { ChangeEvent } from 'react';
-import { ProfileType } from '../../../types/types';
 
 type PropsType = {
   updateStatus: (status: string) => void;
@@ -9,7 +8,6 @@ type PropsType = {
   isOwner: boolean;
 };
 
-// const ProfileStatusHooks: React.FC<PropsType> = ({ status, isOwner, updateStatus }) => {
 const ProfileStatusHooks: React.FC<PropsType> = (props) => {
   let [editMode, setEditMode] = useState(false);
   let [status, setStatus] = useState(props.status);
@@ -39,13 +37,7 @@ const ProfileStatusHooks: React.FC<PropsType> = (props) => {
         {!editMode ? (
           <p onDoubleClick={activateEditMode}>{status || 'no status'}</p>
         ) : (
-          <input
-            onChange={onStatusChange}
-            onBlur={deActivateEditMode}
-            autoFocus={true}
-            value={status}
-            // Дублируешь? Ты го$ноко&ер! Оторвать тебе руку! Ты больше не самурай!
-          />
+          <input onChange={onStatusChange} onBlur={deActivateEditMode} autoFocus={true} value={status} />
         )}
       </div>
     </div>

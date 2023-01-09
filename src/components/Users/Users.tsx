@@ -21,6 +21,9 @@ import {
 } from '../redux/users-selectors';
 import { AppDispatch } from '../redux/redux-store';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import queryString from 'query-string';
+import { useLocation } from 'react-router-dom';
 
 let setCurrentPage = actions.setCurrentPage;
 
@@ -33,10 +36,37 @@ export const Users: React.FC = () => {
   const followingInProgress = useSelector(getFollowingInProgress);
 
   const dispatch: AppDispatch = useDispatch();
-  // const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    dispatch(requestUsers(currentPage, pageSize, filter));
+    navigate({
+      pathname: './users',
+      search: `?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`,
+    });
+  }, [filter, currentPage]);
+
+  useEffect(() => {
+    const parsed = queryString.parse(location.search.substring(1));
+
+    let actualPage = currentPage;
+    let actualFilter = filter;
+
+    if (!!parsed.page) actualPage = Number(parsed.page);
+    if (!!parsed.term) actualFilter = { ...actualFilter, term: parsed.term as string };
+
+    switch (parsed.frind) {
+      case 'null':
+        actualFilter = { ...actualFilter, friend: null };
+        break;
+      case 'true':
+        actualFilter = { ...actualFilter, friend: true };
+        break;
+      case 'false':
+        actualFilter = { ...actualFilter, friend: false };
+        break;
+    }
+    dispatch(requestUsers(actualPage, pageSize, actualFilter));
   }, []);
 
   const onPageChanged = (pageNumber: number) => {

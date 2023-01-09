@@ -20,9 +20,7 @@ const ProfileInfoBlockForm: React.FC<InjectedFormProps<ProfileType & PropsType> 
   return (
     <form onSubmit={handleSubmit} className={!error ? styles.infoblock : styles.commonErrors}>
       <Field component={Input} type={'text'} placeholder={'full name'} name={'fullName'} />
-
       <Field component={Input} type={'text'} name={'aboutMe'} placeholder={'about me'} />
-
       <div className={styles.contacts}>
         {Object.keys(profile.contacts).map((key) => {
           return <Field component={Input} type={'text'} name={`contacts.${key}`} key={key} placeholder={key} />;
