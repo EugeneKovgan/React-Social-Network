@@ -2,17 +2,19 @@ import styles from './Header.module.css';
 import logo from '../../assets/svg/logo_thyme.svg';
 import avatar from '../../assets/img/avatar.jpg';
 import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../redux/auth-reducer';
+import { selectIsAuth, selectIsLogin } from '../redux/auth-selectors';
+import { AppDispatch } from '../redux/redux-store';
 
-export type MapPropsType = {
-  isAuth: boolean;
-  login: string | null;
-};
+export const Header: React.FC = () => {
+  const isAuth = useSelector(selectIsAuth);
+  const login = useSelector(selectIsLogin);
+  const dispatch: AppDispatch = useDispatch();
+  const logoutCallback = () => {
+    dispatch(logout());
+  };
 
-export type DispatchPropsType = {
-  logout: () => void;
-};
-
-const Header: React.FC<MapPropsType & DispatchPropsType> = ({ isAuth, login, logout }) => {
   return (
     <header className={styles.header}>
       <div className='container'>
@@ -25,7 +27,7 @@ const Header: React.FC<MapPropsType & DispatchPropsType> = ({ isAuth, login, log
               {isAuth ? (
                 <span className={styles.loginBlock}>
                   <span>{login}</span>
-                  <span className={styles.logOut} onClick={logout}>
+                  <span className={styles.logOut} onClick={logoutCallback}>
                     logout
                   </span>
                 </span>
@@ -42,5 +44,3 @@ const Header: React.FC<MapPropsType & DispatchPropsType> = ({ isAuth, login, log
     </header>
   );
 };
-
-export default Header;
