@@ -11,10 +11,12 @@ import { Component } from 'react';
 import { InitializeApp } from '../redux/app-reducer';
 import Preloader from '../Preloader/Preloader';
 import { AppStateType } from '../redux/redux-store';
+// import { ChatPage } from '../../pages/Chat/ChatPage';
 
 const News = React.lazy(() => import('../News/News'));
 const Music = React.lazy(() => import('../Music/Music'));
 const Settings = React.lazy(() => import('../Settings/Settings'));
+const ChatPage = React.lazy(() => import('../../pages/Chat/ChatPage'));
 
 type MapPropsType = ReturnType<typeof mapStateToProps>;
 type DispatchPropsType = { InitializeApp: () => void };
@@ -47,6 +49,7 @@ class Content extends Component<MapPropsType & DispatchPropsType> {
             <Route path='/news' element={<News />} />
             <Route path='/music' element={<Music />} />
             <Route path='/settings' element={<Settings />} />
+            <Route path='/chat' element={<ChatPage />} />
             <Route path='/' element={<Navigate to={'/profile'} />} />
           </Routes>
         </Suspense>

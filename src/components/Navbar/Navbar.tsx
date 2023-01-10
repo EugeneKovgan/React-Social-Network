@@ -39,6 +39,13 @@ const Navbar: React.FC = () => {
             Settings
           </NavLink>
         </li>
+        <br />
+
+        <li className={styles.nav_list__item}>
+          <NavLink to='/chat' className={(navData) => (navData.isActive ? styles.active : styles.nav_list__item)}>
+            Chat
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
