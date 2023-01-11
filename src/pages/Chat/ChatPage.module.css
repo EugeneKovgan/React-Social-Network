@@ -1,7 +1,13 @@
+.messages {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 .message {
   display: flex;
   gap: 1rem;
-  /*align-items: center;*/
+  /* align-items: center; */
   justify-content: flex-start;
   border: 1px solid #efeae1;
   padding: 0.5rem;
@@ -37,4 +43,23 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+
+.addMessageForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.addMessageForm textarea {
+  height: 3rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.addMessageForm button {
+  cursor: pointer;
+  height: 2rem;
+  border: 1px solid #efeae1;
+  border-radius: 0.5rem;
 }
