@@ -7,6 +7,7 @@ import authReducer from './auth-reducer';
 import thunk from 'redux-thunk';
 import appReducer from './app-reducer';
 import { ThunkAction } from 'redux-thunk';
+import chatReducer from './chat-reducer';
 
 let reducers = combineReducers({
   dialogsPage: dialogsReducer,
@@ -15,6 +16,7 @@ let reducers = combineReducers({
   auth: authReducer,
   app: appReducer,
   // form: formReducer,
+  chat: chatReducer,
 });
 
 export type AppDispatch = typeof store.dispatch;
