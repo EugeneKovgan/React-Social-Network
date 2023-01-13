@@ -62,3 +62,17 @@
   border: 1px solid #efeae1;
   border-radius: 0.5rem;
 }
+
+.addMessageForm button:disabled {
+  /* cursor: pointer; */
+  /* height: 2rem; */
+  border: 1px solid #f07d0a;
+  /* border-radius: 0.5rem; */
+}
+
+.addMessageForm button:enabled {
+  /* cursor: pointer; */
+  /* height: 2rem; */
+  border: 1px solid #29e886;
+  /* border-radius: 0.5rem; */
+}

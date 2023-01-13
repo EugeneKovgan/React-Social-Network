@@ -2,7 +2,7 @@ import styles from './ChatPage.module.css';
 import photo from '../../assets/img/avatar.jpg';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { MessageType } from '../../api/chat-api';
+import { ChatMessageType } from '../../api/chat-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendMessage, startMessagesListening, stoptMessagesListening } from '../../components/redux/chat-reducer';
 import { AppDispatch, AppStateType } from '../../components/redux/redux-store';
@@ -16,8 +16,8 @@ const ChatPage: React.FC = () => {
 };
 
 const Chat: React.FC = () => {
-  // const dispatch = useDispatch();
   const dispatch: AppDispatch = useDispatch();
+  const status = useSelector((state: AppStateType) => state.chat.status);
 
   useEffect(() => {
     dispatch(startMessagesListening());
@@ -28,33 +28,38 @@ const Chat: React.FC = () => {
 
   return (
     <div className={styles.chat}>
-      <AddMessageForm />
-      <Messages />
+      {status === 'error' ? (
+        <div>need to restart</div>
+      ) : (
+        <>
+          <AddMessageForm />
+          <Messages />
+        </>
+      )}
     </div>
   );
 };
 
-const Messages: React.FC<{}> = ({}) => {
+const Messages: React.FC = () => {
   const messages = useSelector((state: AppStateType) => state.chat.messages);
+  const reversedMessages = [...messages].reverse();
 
   return (
     <div className={styles.messages}>
-      {[...messages].reverse().map((item) => {
+      {reversedMessages.map((item) => {
         return <Message key={uuidv4()} props={item} />;
       })}
     </div>
   );
 };
 
-const Message: React.FC<{ props: MessageType }> = ({ props }) => {
+const Message: React.FC<{ props: ChatMessageType }> = ({ props }) => {
   return (
     <div className={styles.message}>
       <div className={styles.info_block}>
         <img className={styles.post_avatar} src={props.photo ? props.photo : photo} alt='photo' />
         <p>{props.userName}</p>
-        {/* <p>{message.userId}</p> */}
       </div>
-
       <div className={styles.textBlock}>
         <div className={styles.header_block}>
           <p>{props.message}</p>
@@ -67,8 +72,8 @@ const Message: React.FC<{ props: MessageType }> = ({ props }) => {
 
 const AddMessageForm: React.FC<{}> = () => {
   const [message, setMessage] = useState('');
-  const [readyStatus, setReadyStatus] = useState<'pending' | 'ready'>('pending');
   const dispatch: AppDispatch = useDispatch();
+  const status = useSelector((state: AppStateType) => state.chat.status);
 
   const sendMessageHandler = () => {
     if (message) {
@@ -80,7 +85,7 @@ const AddMessageForm: React.FC<{}> = () => {
   return (
     <div className={styles.addMessageForm}>
       <textarea onChange={(e) => setMessage(e.currentTarget.value)} value={message}></textarea>
-      <button disabled={false} onClick={sendMessageHandler}>
+      <button disabled={status !== 'ready'} onClick={sendMessageHandler}>
         add
       </button>
     </div>
