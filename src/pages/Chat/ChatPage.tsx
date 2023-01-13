@@ -6,6 +6,7 @@ import { ChatMessageType } from '../../api/chat-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendMessage, startMessagesListening, stoptMessagesListening } from '../../components/redux/chat-reducer';
 import { AppDispatch, AppStateType } from '../../components/redux/redux-store';
+import React from 'react';
 
 const ChatPage: React.FC = () => {
   return (
@@ -28,32 +29,32 @@ const Chat: React.FC = () => {
 
   return (
     <div className={styles.chat}>
-      {status === 'error' ? (
-        <div>need to restart</div>
-      ) : (
-        <>
-          <AddMessageForm />
-          <Messages />
-        </>
-      )}
+      {status === 'error' ? <div>need to restart</div> : ''}
+      <>
+        <AddMessageForm />
+        <Messages />
+      </>
     </div>
   );
 };
 
-const Messages: React.FC = () => {
+const Messages: React.FC = React.memo(() => {
+  // debugger;
+  console.log('...messages');
   const messages = useSelector((state: AppStateType) => state.chat.messages);
   const reversedMessages = [...messages].reverse();
 
   return (
     <div className={styles.messages}>
       {reversedMessages.map((item) => {
-        return <Message key={uuidv4()} props={item} />;
+        return <Message key={item.id} props={item} />;
       })}
     </div>
   );
-};
+});
 
-const Message: React.FC<{ props: ChatMessageType }> = ({ props }) => {
+const Message: React.FC<{ props: ChatMessageType }> = React.memo(({ props }) => {
+  console.log('one message');
   return (
     <div className={styles.message}>
       <div className={styles.info_block}>
@@ -68,7 +69,7 @@ const Message: React.FC<{ props: ChatMessageType }> = ({ props }) => {
       </div>
     </div>
   );
-};
+});
 
 const AddMessageForm: React.FC<{}> = () => {
   const [message, setMessage] = useState('');

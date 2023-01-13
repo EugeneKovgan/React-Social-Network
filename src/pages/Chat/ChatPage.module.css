@@ -3,11 +3,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  scroll-behavior: smooth;
 }
 .message {
   display: flex;
   gap: 1rem;
-  /* align-items: center; */
   justify-content: flex-start;
   border: 1px solid #efeae1;
   padding: 0.5rem;
@@ -64,15 +64,9 @@
 }
 
 .addMessageForm button:disabled {
-  /* cursor: pointer; */
-  /* height: 2rem; */
   border: 1px solid #f07d0a;
-  /* border-radius: 0.5rem; */
 }
 
 .addMessageForm button:enabled {
-  /* cursor: pointer; */
-  /* height: 2rem; */
   border: 1px solid #29e886;
-  /* border-radius: 0.5rem; */
 }

@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import { userAPI } from '../../api/users-api';
 import { UserType } from '../../types/types';
-import { AppStateType, InferActionsTypes, BaseThunkType, AppDispatch } from './redux-store';
+import { InferActionsTypes, BaseThunkType } from './redux-store';
 
 let initialState = {
   users: [] as Array<UserType>,
@@ -103,8 +103,6 @@ export const actions = {
     } as const),
 };
 
-// type GetStateType = () => AppStateType;
-// type DispatchType = Dispatch<ActionsTypes>;
 type ThunkType = BaseThunkType<ActionsTypes>;
 
 export const requestUsers = (page: number, pageSize: number, filter: FilterType): ThunkType => {

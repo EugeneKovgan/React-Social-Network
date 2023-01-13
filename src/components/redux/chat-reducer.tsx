@@ -4,9 +4,11 @@ import { securityAPI } from '../../api/security-api';
 import { authAPI } from '../../api/auth-api';
 import { BaseThunkType, InferActionsTypes } from './redux-store';
 import { Dispatch } from 'redux';
+import { v4 as uuidv4 } from 'uuid';
 
+type ChatMessageTypeWithID = ChatMessageType & { id: string };
 let initialState = {
-  messages: [] as ChatMessageType[],
+  messages: [] as ChatMessageTypeWithID[],
   status: 'pending' as StatusType,
 };
 
@@ -17,7 +19,14 @@ type ThunkType = BaseThunkType<ActionsType>;
 const chatReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
     case 'chat/MESSAGES_RECEIVED':
-      return { ...state, messages: [...state.messages, ...action.payload.messages] };
+      return {
+        ...state,
+        messages: [...state.messages, ...action.payload.messages.map((m: any) => ({ ...m, id: uuidv4() }))].filter(
+          (m, index, array) => {
+            return index >= array.length - 100;
+          }
+        ),
+      };
     case 'chat/STATUS_CHANGED':
       return { ...state, status: action.payload.status };
     default:
