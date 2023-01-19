@@ -1,4 +1,3 @@
-import { createSelectorHook } from 'react-redux';
 import { AppStateType } from './redux-store';
 
 export const getUsers = (state: AppStateType) => {

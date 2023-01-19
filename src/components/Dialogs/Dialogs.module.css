@@ -6,9 +6,6 @@
   flex-wrap: wrap;
 }
 
-.dialogs_items {
-}
-
 .dialog.active a {
   color: red;
 }

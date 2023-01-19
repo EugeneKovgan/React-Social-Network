@@ -32,9 +32,6 @@
   border-radius: 0.5rem;
 }
 
-.profile_edit_form {
-}
-
 .commonErrors {
   display: flex;
   flex-direction: column;

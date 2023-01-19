@@ -11,7 +11,6 @@ import { Component } from 'react';
 import { InitializeApp } from '../redux/app-reducer';
 import Preloader from '../Preloader/Preloader';
 import { AppStateType } from '../redux/redux-store';
-// import { ChatPage } from '../../pages/Chat/ChatPage';
 
 const News = React.lazy(() => import('../News/News'));
 const Music = React.lazy(() => import('../Music/Music'));

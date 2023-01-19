@@ -8,7 +8,6 @@ import { Header } from './components/Header/Header';
 
 function App() {
   return (
-    // <BrowserRouter basename={process.env.PUBLIC_URL}>
     <BrowserRouter>
       <div className='App'>
         <Header />

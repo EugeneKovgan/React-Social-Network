@@ -39,7 +39,6 @@ const Chat: React.FC = () => {
 };
 
 const Messages: React.FC = React.memo(() => {
-  // debugger;
   console.log('...messages');
   const messages = useSelector((state: AppStateType) => state.chat.messages);
   const reversedMessages = [...messages].reverse();

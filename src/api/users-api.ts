@@ -19,9 +19,4 @@ export const userAPI = {
   follow(userId: number) {
     return instance.post<ResponseType>(`follow/${userId}`, {}).then((response) => response.data);
   },
-
-  // getProfileInfo(userId: number) {
-  //   console.warn('use profileAPI ');
-  //   profileAPI.getProfileInfo(userId);
-  // },
 };
