@@ -1,37 +1,45 @@
 .myPosts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .myPosts .newPostBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-    margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .myPosts .newPostBlock .newPostForm {
-    height: 3rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    border: 1px solid;
-    display: flex;
+  height: 3rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid;
+  display: flex;
+}
 
+.myPosts .newPostBlock textarea {
+  height: 3rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .myPosts .newPostBlock button {
-    cursor: pointer;
-    height: 2rem;
-    border: 1px solid #efeae1;
-    border-radius: 0.5rem;
+  cursor: pointer;
+  height: 2rem;
+  border: 1px solid #efeae1;
+  border-radius: 0.5rem;
 }
 
 .myPosts .newPostBlock button:hover {
-    background: rgba(239, 234, 225, 0.2);
+  background: rgba(239, 234, 225, 0.2);
 }
 
 .myPosts .postList {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
 }

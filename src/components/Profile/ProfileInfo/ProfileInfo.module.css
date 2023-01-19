@@ -1,44 +1,44 @@
 .ProfileInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .ProfileInfo img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
 .infoblock {
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid #efeae1;
-    border-top: 1px solid #efeae1;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #efeae1;
+  border-top: 1px solid #efeae1;
+  gap: 0.2rem;
 }
 
 .contacts {
-    padding-left: 1rem;
-    /*border-bottom: 1px solid #efeae1;*/
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .edit_btn {
-    cursor: pointer;
-    height: 2rem;
-    border: 1px solid #efeae1;
-    border-radius: 0.5rem;
-}
-
-.profile_edit_form {
+  cursor: pointer;
+  height: 2rem;
+  border: 1px solid #efeae1;
+  border-radius: 0.5rem;
 }
 
 .commonErrors {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: flex-start;
-    border: 1px solid #F0C9C5;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    color: red;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  border: 1px solid #f0c9c5;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: red;
 }

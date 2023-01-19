@@ -1,0 +1,72 @@
+.messages {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  scroll-behavior: smooth;
+}
+.message {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  border: 1px solid #efeae1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.textBlock {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.header_block {
+}
+
+.footer_block {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.textBlock p {
+}
+
+.info_block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info_block img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.addMessageForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.addMessageForm textarea {
+  height: 3rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.addMessageForm button {
+  cursor: pointer;
+  height: 2rem;
+  border: 1px solid #efeae1;
+  border-radius: 0.5rem;
+}
+
+.addMessageForm button:disabled {
+  border: 1px solid #f07d0a;
+}
+
+.addMessageForm button:enabled {
+  border: 1px solid #29e886;
+}
